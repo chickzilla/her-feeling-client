@@ -3,7 +3,10 @@ import { Prompt } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
 
-const inter = Prompt({ weight: "200", subsets: ["latin"] });
+const inter = Prompt({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Her Feeling",
@@ -17,6 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" type="x-icon" href="/images/logo/logo_white.svg" />
+      </head>
       <body className={inter.className}>
         <Navbar />
 
