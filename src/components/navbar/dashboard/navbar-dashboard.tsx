@@ -29,13 +29,13 @@ export default function NavbarDashBoard() {
   });
   const pathname = usePathname();
   return (
-    <aside className="h-screen bg-slate-50 flex-none sticky top-0 pt-10 border-r-2 border-slate-300">
+    <aside className="h-screen bg-slate-50 flex-none sticky top-0 pt-16 border-r-2 border-slate-300">
       <button
         onClick={() => {
           localStorage.setItem("navbarExpanded", String(!expanded));
           setExpanded((curr) => !curr);
         }}
-        className="p-1.5 rounded-xl bg-black hover:bg-slate-300 absolute -right-4 top-14 text-white"
+        className="p-1.5 rounded-xl bg-black hover:bg-slate-300 absolute -right-4 top-20 text-white"
       >
         {expanded ? <ChevronFirst /> : <ChevronLast />}
       </button>
