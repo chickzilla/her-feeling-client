@@ -9,7 +9,7 @@ export default function Banner() {
         Her feeling banner video
       </video>
       <div className="absolute inset-0 flex justify-center flex-col text-center space-y-9 items-center">
-        <div className="p-4 text-5xl lg:text-8xl text-white text-center">
+        <div className="p-4 text-5xl md:text-7xl lg:text-8xl text-white text-center">
           <div className="move-up">Understand Her Emotions</div>
           <div className="move-up-delay-1">Make Her Proud</div>
         </div>
