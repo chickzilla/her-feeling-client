@@ -19,7 +19,7 @@ export default function TextArea() {
     <div className="mt-44 move-up-delay-2 w-[60vw] flex justify-center items-center text-center space-x-10">
       <Textarea
         placeholder="Enter her message here!"
-        className="bg-white bg-opacity-70 rounded-3xl p-5 placeholder:bg-gray-500"
+        className="bg-white bg-opacity-70 rounded-3xl p-5 placeholder-gray-500"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         style={{ resize: "none" }}
