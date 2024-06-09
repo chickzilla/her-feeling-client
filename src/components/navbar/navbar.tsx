@@ -19,7 +19,7 @@ export default function Navbar() {
           : "bg-transparent text-white"
       }`}
     >
-      <div className="text-center items-center font-bold flex flex-row fade-in justify-between h-full">
+      <div className="text-center items-center font-bold flex flex-row fade-in justify-between h-full text-sm lg:text-base">
         <Link href="/">
           <div className="flex flex-row items-center">
             <Image

@@ -38,7 +38,7 @@ export default function ResultItem({
             sx={{
               backgroundColor: "whitesmoke",
               "& .MuiLinearProgress-bar": {
-                backgroundColor: color,
+                backgroundColor: "black",
               },
             }}
           />
