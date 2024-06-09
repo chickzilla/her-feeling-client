@@ -50,3 +50,44 @@
   animation: fadeIn 2s ease-in forwards;
   animation-delay: 2s;
 }
+
+@keyframes moveRightToLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.move-right-to-left-0 {
+  animation: moveRightToLeft 0.3s ease-in forwards;
+  animation-delay: 0s;
+}
+
+.move-right-to-left-1 {
+  animation: moveRightToLeft 0.3s ease-in forwards;
+  animation-delay: 0.3s;
+}
+
+.move-right-to-left-2 {
+  animation: moveRightToLeft 0.3s ease-in forwards;
+  animation-delay: 0.6s;
+}
+
+.move-right-to-left-3 {
+  animation: moveRightToLeft 0.3s ease-in forwards;
+  animation-delay: 0.9s;
+}
+
+.move-right-to-left-4 {
+  animation: moveRightToLeft 0.3s ease-in forwards;
+  animation-delay: 0.9s;
+}
+
+.move-right-to-left-5 {
+  animation: moveRightToLeft 0.3s ease-in forwards;
+  animation-delay: 1.2s;
+}

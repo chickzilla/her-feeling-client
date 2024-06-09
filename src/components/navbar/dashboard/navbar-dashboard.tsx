@@ -19,7 +19,7 @@ import NavbarItem from "./navbar-item";
 import { usePathname } from "next/navigation";
 
 export default function NavbarDashBoard() {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   useEffect(() => {
     const expandedDefault =
       typeof window !== "undefined"
