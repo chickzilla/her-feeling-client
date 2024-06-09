@@ -1,10 +1,12 @@
 "use client";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function TextArea() {
   const [message, setMessage] = useState<string>("");
   const [isText, setIsText] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (message.length > 0) {
@@ -17,9 +19,10 @@ export default function TextArea() {
     <div className="mt-44 move-up-delay-2 w-[60vw] flex justify-center items-center text-center space-x-10">
       <Textarea
         placeholder="Enter her message here!"
-        className="bg-white bg-opacity-70 rounded-3xl p-5"
+        className="bg-white bg-opacity-70 rounded-3xl p-5 "
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        style={{ resize: "none" }}
       />
       <button
         className={`bg-black text-white py-5 px-5 rounded-2xl font-normal
@@ -30,6 +33,7 @@ export default function TextArea() {
          }
           `}
         disabled={!isText}
+        onClick={() => router.push("/board")}
       >
         Get Start
       </button>
