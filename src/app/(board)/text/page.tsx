@@ -11,7 +11,7 @@ export default function BoardTextPage() {
             <div className="">
               <TextAreaBoard />
             </div>
-            <div>
+            <div className="">
               <ResultPane />
             </div>
           </div>

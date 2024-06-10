@@ -1,12 +1,23 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
+import CircularProgress from "@mui/material/CircularProgress";
 
-import LinearProgress from "@mui/material/LinearProgress";
+const CircularContainer = styled("div")(({ theme }) => ({
+  position: "relative",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
 
-const BorderLinearProgress = styled(LinearProgress)(() => ({
-  height: 10,
-  borderRadius: 5,
+const IconContainer = styled("div")(({ theme }) => ({
+  position: "absolute",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
 }));
 
 export default function ResultItem({
@@ -14,35 +25,51 @@ export default function ResultItem({
   percent,
   children,
   color,
+  sizeCircle,
 }: {
   mood: string;
   percent: number;
   children: React.ReactNode;
   color: string;
+  sizeCircle: number;
 }) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const animateProgress = setTimeout(() => {
+      setProgress(percent * 100);
+    }, 200); // delay for starting the animation
+
+    return () => clearTimeout(animateProgress);
+  }, [percent]);
+
   return (
-    <div className="flex items-center justify-start text-center text-gray-400  space-x-8 px-2 move-right-to-left">
-      <div>{children}</div>
-      <div className="flex flex-col space-y-2 bg-white rounded-full text-black py-5 px-10 w-[35vw] items-start border-slate-300 border-2">
-        <div className="flex flex-row space-x-7 items-center justify-center">
-          <div className="font-semibold text-2xl">{mood}</div>
-          <div className="text-center text-sm text-gray-500">
-            {(percent * 100).toFixed(2)}
-            {" %"}
-          </div>
-        </div>
-        <div className="w-[100%]">
-          <BorderLinearProgress
-            variant="determinate"
-            value={percent * 100}
-            sx={{
-              backgroundColor: "whitesmoke",
-              "& .MuiLinearProgress-bar": {
-                backgroundColor: "black",
-              },
-            }}
-          />
-        </div>
+    <div className="flex-col items-center justify-center text-center text-gray-400 move-right-to-left">
+      <CircularContainer>
+        <CircularProgress
+          variant="determinate"
+          value={progress}
+          size={sizeCircle + 30}
+          sx={{
+            color: color,
+            transition: "value 1.5s ease-in-out", // smooth transition for progress
+          }}
+        />
+        <IconContainer>{children}</IconContainer>
+      </CircularContainer>
+      <div
+        className={`text-black font-semibold ${
+          sizeCircle > 100 ? "text-5xl" : "text-xl"
+        }`}
+      >
+        {mood}
+      </div>
+      <div>
+        {sizeCircle > 100 ? null : (
+          <span className="font-semibold text-base text-gray-500">
+            {progress}%
+          </span>
+        )}
       </div>
     </div>
   );
