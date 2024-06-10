@@ -25,7 +25,7 @@ export default function HaveResult() {
             color="gray"
             sizeCircle={50}
           >
-            <BsEmojiTear size={50} style={{ color: "black" }} />
+            <div className="text-4xl">😥</div>
           </ResultItem>
         </div>
         <div className="">
@@ -35,22 +35,22 @@ export default function HaveResult() {
             color="yellowgreen"
             sizeCircle={50}
           >
-            <BsEmojiLaughing size={50} style={{ color: "black" }} />
+            <div className="text-4xl">😂</div>
           </ResultItem>
         </div>
         <div className="">
           <ResultItem mood="Love" percent={0.5} color="pink" sizeCircle={50}>
-            <BsEmojiKiss size={50} style={{ color: "black" }} />
+            <div className="text-4xl">🥰</div>
           </ResultItem>
         </div>
         <div className="">
           <ResultItem mood="Angry" percent={0.5} color="red" sizeCircle={50}>
-            <BsEmojiAngry size={50} style={{ color: "black" }} />
+            <div className="text-4xl">👿</div>
           </ResultItem>
         </div>
         <div className="">
           <ResultItem mood="Fear" percent={0.5} color="purple" sizeCircle={50}>
-            <BsEmojiDizzy size={50} style={{ color: "black" }} />
+            <div className="text-4xl">😨</div>
           </ResultItem>
         </div>
         <div className="">
@@ -60,7 +60,7 @@ export default function HaveResult() {
             color="orange"
             sizeCircle={50}
           >
-            <BsEmojiAstonished size={50} style={{ color: "black" }} />
+            <div className="text-4xl">😦</div>
           </ResultItem>
         </div>
       </div>
