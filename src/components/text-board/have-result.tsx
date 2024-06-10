@@ -16,12 +16,18 @@ export default function HaveResult() {
         Result
         <Bot size={50} className="ml-10" />
       </div>
-      <div className="">
-        <ResultItem mood="Sadness" percent={0.85} color="gray" sizeCircle={180}>
-          <BsEmojiTear size={150} style={{ color: "black" }} />
-        </ResultItem>
-      </div>
+
       <div className="grid grid-cols-3 gap-y-5 py-10 ">
+        <div className="">
+          <ResultItem
+            mood="Sadness"
+            percent={0.85}
+            color="gray"
+            sizeCircle={50}
+          >
+            <BsEmojiTear size={50} style={{ color: "black" }} />
+          </ResultItem>
+        </div>
         <div className="">
           <ResultItem
             mood="Joy"

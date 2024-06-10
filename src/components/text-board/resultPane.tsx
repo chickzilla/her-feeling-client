@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function ResultPane() {
   const [isResult, setIsResult] = useState(true);
   return (
-    <div className="flex flex-col text-center border-t-2 border-slate-300 w-[50vw] py-10">
+    <div className="flex flex-col text-center border-t-2 border-slate-300 w-[50vw] py-5 mt-10">
       {isResult ? <HaveResult /> : <NoResult />}
     </div>
   );
