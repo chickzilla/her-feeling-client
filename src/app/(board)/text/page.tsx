@@ -9,8 +9,8 @@ export default function BoardTextPage() {
   return (
     <>
       <main className="w-[100vw] px-20 pt-[100px] space-y-12 min-h-[100vh] overflow-y-hidden text-black bg-white overflow-x-hidden">
-        <div className="flex flex-col justify-between">
-          <div className="flex lg:flex-row flex-col lg:justify-between space-y-12 lg:space-y-0 pb-10">
+        <div className="flex flex-col justify-evenly">
+          <div className="flex lg:flex-row flex-col lg:justify-between space-y-12 lg:space-y-0">
             <TextAreaBoard />
             <div className="flex items-start justify-center text-center ">
               <FirstResult />
