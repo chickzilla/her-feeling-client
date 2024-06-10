@@ -12,7 +12,7 @@ export default function BoardTextPage() {
         <div className="flex flex-col justify-between">
           <div className="flex lg:flex-row flex-col lg:justify-between space-y-12 lg:space-y-0 pb-10">
             <TextAreaBoard />
-            <div className="flex items-center justify-center text-center ">
+            <div className="flex items-start justify-center text-center ">
               <FirstResult />
             </div>
           </div>

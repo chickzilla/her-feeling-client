@@ -4,7 +4,7 @@ import ResultItem from "./result-item";
 import { useState } from "react";
 
 export default function FirstResult() {
-  const [isResult, setIsResult] = useState(false);
+  const [isResult, setIsResult] = useState(true);
   return (
     <div className="flex flex-col">
       {isResult ? (
@@ -12,7 +12,9 @@ export default function FirstResult() {
           <div className="text-9xl">😥</div>
         </ResultItem>
       ) : (
-        <div className="text-9xl">😦</div>
+        <ResultItem mood="" percent={0} color="gray" sizeCircle={250}>
+          <div className="text-9xl">😦</div>
+        </ResultItem>
       )}
     </div>
   );
