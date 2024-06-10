@@ -16,10 +16,10 @@ export default function Navbar() {
       className={`fixed top-0 w-screen h-16 px-8 items-center z-50 ${
         !isRoot
           ? "bg-slate-50 border-slate-300 border-b-2 text-black"
-          : "bg-transparent text-white"
+          : "bg-transparent text-white fade-in"
       }`}
     >
-      <div className="text-center items-center font-bold flex flex-row fade-in justify-between h-full text-sm lg:text-base">
+      <div className="text-center items-center font-bold flex flex-row justify-between h-full text-sm lg:text-base">
         <Link href="/">
           <div className="flex flex-row items-center">
             <Image

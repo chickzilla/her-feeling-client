@@ -36,6 +36,10 @@
   }
 }
 
+.fade-in-delay-0 {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
 .fade-in {
   animation: fadeIn 1s ease-in forwards;
   animation-delay: 0.5s;
