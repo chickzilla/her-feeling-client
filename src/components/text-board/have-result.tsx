@@ -5,7 +5,7 @@ import ResultHover from "./result-hover";
 export default function HaveResult() {
   return (
     <div className=" items-center justify-center text-center text-black space-y-6 w-full py-10 ">
-      <div className="flex items-center text-start text-4xl font-bold">
+      <div className="flex items-center text-start title-2">
         Result
         <Bot size={50} className="ml-10" />
       </div>

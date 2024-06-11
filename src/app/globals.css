@@ -95,3 +95,21 @@
   animation: moveRightToLeft 0.3s ease-in forwards;
   animation-delay: 1.5s;
 }
+
+@layer components {
+  .title-1 {
+    @apply text-5xl text-black font-semibold;
+  }
+
+  .title-2 {
+    @apply text-4xl text-black font-bold;
+  }
+
+  .description {
+    @apply text-lg text-gray-500;
+  }
+
+  .subtitle {
+    @apply text-xl text-black;
+  }
+}

@@ -59,7 +59,7 @@ export default function ResultItem({
       </CircularContainer>
       <div
         className={`text-black font-semibold ${
-          sizeCircle > 100 ? "text-5xl mt-10" : "text-xl"
+          sizeCircle > 100 ? "title-1" : "subtitle"
         }`}
       >
         {mood}
