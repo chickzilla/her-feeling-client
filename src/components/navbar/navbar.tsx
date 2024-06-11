@@ -1,7 +1,7 @@
 import Image from "next/image";
 import NavbarMiddleItem from "./navbar_middle_item";
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { VscGithubInverted } from "react-icons/vsc";
+
 import Link from "next/link";
 export default function Navbar() {
   return (
@@ -24,7 +24,11 @@ export default function Navbar() {
         </Link>
 
         <NavbarMiddleItem />
-        <div>{""}</div>
+        <div>
+          <Link href="https://github.com/chickzilla/her-feeling-client">
+            <VscGithubInverted className="text-2xl hover:cursor-pointer" />
+          </Link>
+        </div>
       </div>
     </nav>
   );

@@ -16,35 +16,6 @@ export default function HelpSearchQuery() {
           for growth: "I can't do this yet." View Challenges as Opportunities:
           Instead of seeing obstacles as roadblocks, consider them as chances to
           learn and improve. Challenges push you out of your comfort zone,
-          fostering resilience and innovation. Embrace them as stepping stones
-          toward your goals. Learn from Failure: Failure is not the end; it's a
-          valuable teacher. Analyze what went wrong, extract lessons from the
-          experience, and use them to refine your approach. Every setback is an
-          opportunity to gather insights and grow stronger. Embrace the Power of
-          Yet: Understand that where you are now doesn't dictate where you'll
-          end up. If you haven't achieved something yet, it simply means you're
-          on a journey toward it. Adding "yet" to the end of sentences like "I
-          can't do this" transforms them into opportunities for growth: "I can't
-          do this yet." View Challenges as Opportunities: Instead of seeing
-          obstacles as roadblocks, consider them as chances to learn and
-          improve. Challenges push you out of your comfort zone, fostering
-          resilience and innovation. Embrace them as stepping stones toward your
-          goals. Learn from Failure: Failure is not the end; it's a valuable
-          teacher. Analyze what went wrong, extract lessons from the experience,
-          and use them to refine your approach. Every setback is an opportunity
-          to gather insights and grow stronger.Embrace the Power of Yet:
-          Understand that where you are now doesn't dictate where you'll end up.
-          If you haven't achieved something yet, it simply means you're on a
-          journey toward it. Adding "yet" to the end of sentences like "I can't
-          do this" transforms them into opportunities for growth: "I can't do
-          this yet." View Challenges as Opportunities: Instead of seeing
-          obstacles as roadblocks, consider them as chances to learn and
-          improve. Challenges push you out of your comfort zone, fostering
-          resilience and innovation. Embrace them as stepping stones toward your
-          goals. Learn from Failure: Failure is not the end; it's a valuable
-          teacher. Analyze what went wrong, extract lessons from the experience,
-          and use them to refine your approach. Every setback is an opportunity
-          to gather insights and grow stronger. Embrace the Power of Yet:
           Understand...
         </div>
       </div>

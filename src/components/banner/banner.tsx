@@ -15,9 +15,13 @@ export default function Banner() {
         </div>
         <div className="text-white move-up-delay-2 text-sm lg:text-base px-5">
           <div>
-            By text and image classifier model, We can predict her feeling.
+            By leveraging a text and image classifier model, we can determine
+            her emotional state.
           </div>
-          <div>So, let me help you.</div>
+          <div>
+            If you have a problem on how to tell someone feeling, I am here to
+            help you.
+          </div>
         </div>
         <TextArea />
       </div>

@@ -25,7 +25,7 @@ export default function NavbarMiddleItem() {
               AI classifier
             </NavigationMenuTrigger>
             <NavigationMenuContent className="">
-              <div className=" bg-black rounded-2xl border-2 border-gray-600 bg-opacity-65 p-3 flex flex-row space-x-5 ">
+              <div className=" bg-black rounded-2xl border-2 border-gray-600 bg-opacity-30 p-3 flex flex-row space-x-5 ">
                 <NavbarDropdownItem
                   name="Text"
                   href="/text"
