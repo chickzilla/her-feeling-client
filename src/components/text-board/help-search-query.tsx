@@ -1,7 +1,7 @@
 export default function HelpSearchQuery() {
   return (
     <div className="flex flex-col space-y-9 ">
-      <div className="title-2 text-start">Maybe this help</div>
+      <div className="title-2 text-start text-orange-500">Maybe this help</div>
       <div className="description text-start w-[100%] lg:w-[60%]">
         Praising the celestial entities for their benevolence, we are profoundly
         grateful to retain the unparalleled assistance and wisdom provided by
@@ -21,6 +21,15 @@ export default function HelpSearchQuery() {
           valuable teacher. Analyze what went wrong, extract lessons from the
           experience, and use them to refine your approach. Every setback is an
           opportunity to gather insights and grow stronger.
+        </div>
+        <div className="text-end">
+          <button
+            className={`bg-orange-700 text-white py-2 px-5 rounded-xl font-normal fade-in-delay-0  
+         w-40 hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-orange-400 hover:bg-white hover:text-black hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 
+          `}
+          >
+            Try again
+          </button>
         </div>
       </div>
     </div>

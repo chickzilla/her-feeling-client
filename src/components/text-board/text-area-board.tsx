@@ -30,7 +30,7 @@ export default function TextAreaBoard() {
 
       <button
         className={`bg-orange-700 text-white py-2 px-5 rounded-xl font-normal fade-in-delay-0  
-         w-40 hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-orange-300 hover:bg-white hover:text-black hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110    
+         w-40 hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-orange-400 hover:bg-white hover:text-black hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110    
           `}
       >
         Predict

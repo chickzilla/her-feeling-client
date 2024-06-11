@@ -15,7 +15,7 @@ export default function ResultHover({
         {children}
       </HoverCardTrigger>
       <HoverCardContent>
-        <div className="bg-black text-white p-4 rounded-2xl">
+        <div className="bg-white text-black p-4 rounded-2xl">
           The React Framework – created and maintained by @vercel.
         </div>
       </HoverCardContent>
