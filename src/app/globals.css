@@ -98,18 +98,18 @@
 
 @layer components {
   .title-1 {
-    @apply text-5xl text-black font-semibold;
+    @apply text-6xl text-white font-semibold;
   }
 
   .title-2 {
-    @apply text-4xl text-black font-bold;
+    @apply text-4xl text-white font-bold;
   }
 
   .description {
-    @apply text-lg text-gray-500;
+    @apply text-base text-[#C2CFD9];
   }
 
   .subtitle {
-    @apply text-xl text-black;
+    @apply text-xl text-white;
   }
 }

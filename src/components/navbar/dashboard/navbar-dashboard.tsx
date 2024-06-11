@@ -29,13 +29,13 @@ export default function NavbarDashBoard() {
   });
   const pathname = usePathname();
   return (
-    <aside className="h-screen bg-slate-50 flex-none sticky top-0 pt-16 border-r-2 border-slate-300">
+    <aside className="h-screen bg-black flex-none sticky top-0 pt-16 border-r-2 border-gray-800">
       <button
         onClick={() => {
           localStorage.setItem("navbarExpanded", String(!expanded));
           setExpanded((curr) => !curr);
         }}
-        className="p-1.5 rounded-xl bg-black hover:bg-slate-300 absolute -right-4 top-20 text-white"
+        className="p-1.5 rounded-xl bg-white hover:bg-slate-300 absolute -right-4 top-20 text-black"
       >
         {expanded ? <ChevronFirst /> : <ChevronLast />}
       </button>
@@ -46,13 +46,13 @@ export default function NavbarDashBoard() {
       >
         <div className="flex flex-col justify-between items-center gap-3.5 px-2">
           <span
-            className={`text-black text-sm text-center font-semibold overflow-hidden text-nowrap ${
+            className={`text-white text-sm text-center font-semibold overflow-hidden text-nowrap ${
               expanded ? "w-full" : "w-0"
             }`}
           >
             Tell us by
           </span>
-          <hr className="w-full bg-white my-5" />
+          <hr className="w-full bg-[#041016] my-5" />
         </div>
         <ul className="flex-1 flex gap-2.5 flex-col">
           <NavbarItem

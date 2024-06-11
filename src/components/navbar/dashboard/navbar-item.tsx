@@ -18,8 +18,8 @@ export default function NavbarItem({
       <li
         className={`relative rounded-xl flex items-center py-2.5 px-2.5 justify-center cursor-pointer transition-colors group ${
           active
-            ? "bg-black text-white"
-            : "hover:bg-black text-black  hover:text-white"
+            ? "bg-white text-[#041016]"
+            : "hover:bg-white text-white  hover:text-black"
         }`}
       >
         <div className="flex-initial h-6">{icon}</div>

@@ -44,7 +44,7 @@ export default function ResultItem({
   }, [percent]);
 
   return (
-    <div className="flex-col items-center justify-center text-center text-gray-400 move-right-to-left">
+    <div className="flex-col items-center justify-center text-center text-gray-400 move-right-to-left w-[30vw]">
       <CircularContainer>
         <CircularProgress
           variant="determinate"
@@ -58,8 +58,8 @@ export default function ResultItem({
         <IconContainer>{children}</IconContainer>
       </CircularContainer>
       <div
-        className={`text-black font-semibold ${
-          sizeCircle > 100 ? "title-1" : "subtitle"
+        className={`text-white font-semibold ${
+          sizeCircle > 100 ? "title-2 text-[#C2CFD9]" : ""
         }`}
       >
         {mood}
