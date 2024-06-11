@@ -1,6 +1,7 @@
 import ResultItem from "./result-item";
 import { Bot } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import HelpSearchQuery from "./help-search-query";
 
 export default function HaveResult() {
   return (
@@ -53,6 +54,7 @@ export default function HaveResult() {
           </ResultItem>
         </div>
       </div>
+      <HelpSearchQuery />
     </div>
   );
 }
