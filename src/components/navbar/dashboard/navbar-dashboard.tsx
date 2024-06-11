@@ -3,42 +3,46 @@
 import {
   ChevronLast,
   ChevronFirst,
-  Home,
-  FileSearch,
-  Folders,
-  Radio,
-  FilePlus,
   Trash2,
   MessageSquareWarning,
   BookType,
   Images,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import NavbarItem from "./navbar-item";
 import { usePathname } from "next/navigation";
+import NavbarItem from "./navbar-item";
+import { useTheme, useMediaQuery } from "@mui/material";
 
 export default function NavbarDashBoard() {
-  const [expanded, setExpanded] = useState(true);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const [expanded, setExpanded] = useState(!isSmallScreen);
+
   useEffect(() => {
-    const expandedDefault =
-      typeof window !== "undefined"
-        ? localStorage.getItem("navbarExpanded")
-        : "false";
-    setExpanded(expandedDefault === "true");
-  });
+    if (!isSmallScreen) {
+      const expandedDefault =
+        typeof window !== "undefined"
+          ? localStorage.getItem("navbarExpanded")
+          : "false";
+      setExpanded(expandedDefault === "true");
+    }
+  }, [isSmallScreen]);
+
   const pathname = usePathname();
+
   return (
     <aside className="h-screen bg-black flex-none sticky top-0 pt-16 border-r-2 border-gray-600">
-      <button
-        onClick={() => {
-          localStorage.setItem("navbarExpanded", String(!expanded));
-          setExpanded((curr) => !curr);
-        }}
-        className="p-1.5 rounded-xl bg-white hover:bg-slate-300 absolute -right-4 top-20 text-black"
-      >
-        {expanded ? <ChevronFirst /> : <ChevronLast />}
-      </button>
+      {!isSmallScreen && (
+        <button
+          onClick={() => {
+            localStorage.setItem("navbarExpanded", String(!expanded));
+            setExpanded((curr) => !curr);
+          }}
+          className="p-1.5 rounded-xl bg-white hover:bg-slate-300 absolute -right-4 top-20 text-black"
+        >
+          {expanded ? <ChevronFirst /> : <ChevronLast />}
+        </button>
+      )}
       <nav
         className={`h-full flex flex-col max-w-60 justify-between overflow-x-hidden transition-all overflow-y-hidden no-scrollbar py-14 ${
           expanded ? "px-10" : "px-4"

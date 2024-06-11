@@ -12,19 +12,19 @@ export default function Navbar() {
     >
       <div className="text-center items-center font-bold flex flex-row justify-between h-full text-sm lg:text-base">
         <Link href="/">
-          <div className="flex flex-row items-center">
+          <div className="flex flex-row items-center space-x-5">
             <Image
-              alt="predict feelingtext"
-              src="/images/logo/logo_white.png"
-              width={50}
-              height={50}
+              alt="predict feeling bt text and image classifier model"
+              src="/images/logo/logo.png"
+              width={30}
+              height={30}
             />
             <div>HERFEEL</div>
           </div>
         </Link>
 
         <NavbarMiddleItem />
-        <div>Login</div>
+        <div>{""}</div>
       </div>
     </nav>
   );

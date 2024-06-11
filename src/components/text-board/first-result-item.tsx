@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import CircularProgress from "@mui/material/CircularProgress";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 const CircularContainer = styled("div")(({ theme }) => ({
   position: "relative",
@@ -33,6 +35,12 @@ export default function FirstResultItem({
 }) {
   const [progress, setProgress] = useState(0);
 
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between("sm", "md"));
+
+  const size = isSmallScreen || isMediumScreen ? 230 : 330; // 150 for small and medium screens, 330 for large screens
+
   useEffect(() => {
     const animateProgress = setTimeout(() => {
       setProgress(percent * 100);
@@ -47,7 +55,7 @@ export default function FirstResultItem({
         <CircularProgress
           variant="determinate"
           value={progress}
-          size={300 + 30}
+          size={size}
           sx={{
             color: color,
             transition: "value 1.5s ease-in-out", // smooth transition for progress

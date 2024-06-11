@@ -98,7 +98,7 @@
 
 @layer components {
   .title-1 {
-    @apply text-6xl text-white font-semibold;
+    @apply text-4xl lg:text-6xl text-white font-semibold;
   }
 
   .title-2 {
@@ -106,7 +106,7 @@
   }
 
   .description {
-    @apply text-base text-[#C2CFD9];
+    @apply text-xs lg:text-base text-[#C2CFD9];
   }
 
   .subtitle {

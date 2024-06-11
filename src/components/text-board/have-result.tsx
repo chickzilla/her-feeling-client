@@ -10,7 +10,7 @@ import RatingResult from "./rating-result";
 export default function HaveResult() {
   return (
     <div className=" items-center justify-center text-center text-black space-y-6 w-full py-10 ">
-      <div className="grid grid-cols-3 lg:grid-cols-6 gap-y-5 py-10 ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-5 py-10 ">
         <div className="">
           <ResultHover>
             <ResultItem

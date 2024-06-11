@@ -12,16 +12,18 @@ export default function FirstResult() {
       {isResult ? (
         <div className=" flex flex-col space-y-10">
           <FirstResultItem mood="Sadness" percent={0.85} color="gray">
-            <div className="text-[15em]">😥</div>
+            <div className="text-[10em] lg:text-[15em]">😥</div>
           </FirstResultItem>
         </div>
       ) : (
-        <ResultItem mood="lmao" percent={0} color="gray" sizeCircle={300}>
-          <div className="text-[15em]">😦</div>
-        </ResultItem>
+        <FirstResultItem mood="lmao" percent={0} color="gray">
+          <div className="text-xs lg:text-[15em]">😦</div>
+        </FirstResultItem>
       )}
 
-      <div className="text-white text-2xl font-semibold"></div>
+      <div className="text-gray-400  text-base lg:text-xl font-semibold">
+        With an approximate probability 85%
+      </div>
     </div>
   );
 }
