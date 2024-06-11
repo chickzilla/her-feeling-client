@@ -20,18 +20,16 @@ const IconContainer = styled("div")(({ theme }) => ({
   bottom: 0,
 }));
 
-export default function ResultItem({
+export default function FirstResultItem({
   mood,
   percent,
   children,
   color,
-  sizeCircle,
 }: {
   mood: string;
   percent: number;
   children: React.ReactNode;
   color: string;
-  sizeCircle: number;
 }) {
   const [progress, setProgress] = useState(0);
 
@@ -49,7 +47,7 @@ export default function ResultItem({
         <CircularProgress
           variant="determinate"
           value={progress}
-          size={sizeCircle + 30}
+          size={300 + 30}
           sx={{
             color: color,
             transition: "value 1.5s ease-in-out", // smooth transition for progress
@@ -57,12 +55,14 @@ export default function ResultItem({
         />
         <IconContainer>{children}</IconContainer>
       </CircularContainer>
-      <div className={`text-white font-semibold text-center `}>{mood}</div>
-      <div>
-        <span className="font-semibold text-base text-gray-500">
-          {progress}%
-        </span>
+      <div
+        className={`font-semibold text-center
+          title-2 text-[#C2CFD9]
+        `}
+      >
+        {mood}
       </div>
+      <div>{null}</div>
     </div>
   );
 }

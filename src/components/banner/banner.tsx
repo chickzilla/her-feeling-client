@@ -1,6 +1,8 @@
 import Button from "./button";
 import TextArea from "./textArea";
 
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 export default function Banner() {
   return (
     <div className="relative w-screen h-[100vh] overflow-hidden">
@@ -21,6 +23,16 @@ export default function Banner() {
           <div>So, let me help you.</div>
         </div>
         <TextArea />
+        <Tabs defaultValue="account" className="w-[400px]">
+          <TabsList>
+            <TabsTrigger value="account">Account</TabsTrigger>
+            <TabsTrigger value="password">Password</TabsTrigger>
+          </TabsList>
+          <TabsContent value="account">
+            Make changes to your account here.
+          </TabsContent>
+          <TabsContent value="password">Change your password here.</TabsContent>
+        </Tabs>
       </div>
     </div>
   );
