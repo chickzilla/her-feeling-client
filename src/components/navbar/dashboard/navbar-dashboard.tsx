@@ -29,7 +29,7 @@ export default function NavbarDashBoard() {
   });
   const pathname = usePathname();
   return (
-    <aside className="h-screen bg-black flex-none sticky top-0 pt-16 border-r-2 border-gray-800">
+    <aside className="h-screen bg-black flex-none sticky top-0 pt-16 border-r-2 border-gray-600">
       <button
         onClick={() => {
           localStorage.setItem("navbarExpanded", String(!expanded));

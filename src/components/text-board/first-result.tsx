@@ -4,7 +4,7 @@ import ResultItem from "./result-item";
 import { useState } from "react";
 
 export default function FirstResult() {
-  const [isResult, setIsResult] = useState(true);
+  const [isResult, setIsResult] = useState(false);
 
   return (
     <div className="flex flex-col space-y-9">
@@ -20,17 +20,12 @@ export default function FirstResult() {
           </ResultItem>
         </div>
       ) : (
-        <ResultItem
-          mood="Just tell me bro don't be shy"
-          percent={0}
-          color="gray"
-          sizeCircle={300}
-        >
+        <ResultItem mood="" percent={0} color="gray" sizeCircle={300}>
           <div className="text-[15em]">😦</div>
         </ResultItem>
       )}
 
-      <div className="text-white text-2xl font-semibold">85 %</div>
+      <div className="text-white text-2xl font-semibold"></div>
     </div>
   );
 }

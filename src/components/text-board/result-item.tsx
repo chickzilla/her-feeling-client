@@ -44,7 +44,7 @@ export default function ResultItem({
   }, [percent]);
 
   return (
-    <div className="flex-col items-center justify-center text-center text-gray-400 move-right-to-left w-[30vw]">
+    <div className="flex-col items-center justify-center text-center text-gray-400 move-right-to-left">
       <CircularContainer>
         <CircularProgress
           variant="determinate"
@@ -58,7 +58,7 @@ export default function ResultItem({
         <IconContainer>{children}</IconContainer>
       </CircularContainer>
       <div
-        className={`text-white font-semibold ${
+        className={`text-white font-semibold text-center ${
           sizeCircle > 100 ? "title-2 text-[#C2CFD9]" : ""
         }`}
       >
