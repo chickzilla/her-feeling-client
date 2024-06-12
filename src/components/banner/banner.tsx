@@ -1,3 +1,4 @@
+import CookiePanel from "../cookie-drawer/cookie-panel";
 import Button from "./button";
 import TextArea from "./textArea";
 
@@ -11,7 +12,7 @@ export default function Banner() {
       <div className="absolute inset-0 flex justify-center flex-col text-center space-y-9 items-center">
         <div className="p-4 text-5xl md:text-7xl lg:text-8xl text-white text-center">
           <div className="move-up">Understand Her Emotions</div>
-          <div className="move-up-delay-1">Make Her Pround</div>
+          <div className="move-up-delay-1">Make Her Proud</div>
         </div>
         <div className="text-white move-up-delay-2 text-sm lg:text-base px-5">
           <div>
