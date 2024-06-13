@@ -40,7 +40,7 @@ export default function NavbarDashBoard() {
             localStorage.setItem("navbarExpanded", String(!expanded));
             setExpanded((curr) => !curr);
           }}
-          className="p-1.5 rounded-xl absolute -right-1 top-20 text-gray-400 fade-in-delay-0"
+          className="p-1.5 rounded-xl absolute -right-4 top-20 text-gray-400 fade-in-delay-0"
         >
           {expanded ? <ChevronsLeft /> : <ChevronsRight />}
         </button>

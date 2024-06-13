@@ -17,7 +17,7 @@ export default function FirstResult() {
         </div>
       ) : (
         <FirstResultItem mood="" percent={0} color="gray">
-          <div className="text-xs lg:text-[15em]">😦</div>
+          <div className="text-[10em] lg:text-[15em]">😦</div>
         </FirstResultItem>
       )}
     </div>

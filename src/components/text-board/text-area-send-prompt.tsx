@@ -2,33 +2,36 @@
 import Feeling from "@/interface/feeling";
 import getFeeling from "@/services/getFeeling";
 import { useEffect, useState } from "react";
+import { useToast } from "../ui/use-toast";
 export default function TextAreaSendPrompt() {
   const [message, setMessage] = useState("");
-  const [result, setResult] = useState<Feeling | null>(null);
-  const [isText, setIsText] = useState<boolean>(false);
   const [isFetching, setIsFetching] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (message.length > 0) {
-      setIsText(true);
-    } else {
-      setIsText(false);
-    }
-  }, [message]);
+  const { toast } = useToast();
 
   const sendPrompt = async () => {
-    if (!isText) {
-      return;
-    }
-    try {
-      setIsFetching(true);
-      const res: Feeling = await getFeeling({ prompt: message });
-      console.log(res);
-      setIsFetching(false);
-    } catch (e) {
-      if (e instanceof Error) {
-        console.log(e.message);
+    if (message.trim() === "") {
+      toast({
+        title: "Text Predict: Invalid Input",
+        description: "Please enter a prompt message",
+        isError: true,
+      });
+    } else {
+      try {
+        setIsFetching(true);
+        const res: Feeling = await getFeeling({ prompt: message });
+        console.log(res);
         setIsFetching(false);
+      } catch (e) {
+        if (e instanceof Error) {
+          console.log(e.message);
+          toast({
+            title: "Error",
+            description: "cannot send prompt to server",
+            isError: true,
+          });
+          setIsFetching(false);
+        }
       }
     }
   };
