@@ -33,14 +33,14 @@ export default function NavbarDashBoard() {
   const pathname = usePathname();
 
   return (
-    <aside className="h-screen bg-[#0e1111] flex-none sticky top-0 py-16 ">
+    <aside className="h-screen bg-[#0e1111] flex-none sticky top-0 py-16">
       {!isSmallScreen && (
         <button
           onClick={() => {
             localStorage.setItem("navbarExpanded", String(!expanded));
             setExpanded((curr) => !curr);
           }}
-          className="p-1.5 rounded-xl absolute -right-1 top-20 text-gray-400"
+          className="p-1.5 rounded-xl absolute -right-1 top-20 text-gray-400 fade-in-delay-0"
         >
           {expanded ? <ChevronsLeft /> : <ChevronsRight />}
         </button>
@@ -48,7 +48,7 @@ export default function NavbarDashBoard() {
       <nav
         className={`h-full flex flex-col max-w-60 justify-between overflow-x-hidden transition-all overflow-y-hidden no-scrollbar py-14 ${
           expanded ? "px-10" : "px-4"
-        } border-zinc-800 border-r-2`}
+        } border-zinc-800 border-r-2 fade-in-delay-0`}
       >
         <div className="flex flex-col justify-between items-center gap-3.5 px-2">
           <span

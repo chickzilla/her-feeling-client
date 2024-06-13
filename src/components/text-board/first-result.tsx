@@ -5,7 +5,7 @@ import { useState } from "react";
 import FirstResultItem from "./first-result-item";
 
 export default function FirstResult() {
-  const [isResult, setIsResult] = useState(true);
+  const [isResult, setIsResult] = useState(false);
 
   return (
     <div className="flex flex-col space-y-9">
