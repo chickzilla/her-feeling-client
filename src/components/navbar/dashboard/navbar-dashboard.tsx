@@ -7,6 +7,8 @@ import {
   MessageSquareWarning,
   BookType,
   Images,
+  ChevronsRight,
+  ChevronsLeft,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -31,22 +33,22 @@ export default function NavbarDashBoard() {
   const pathname = usePathname();
 
   return (
-    <aside className="h-screen bg-black flex-none sticky top-0 pt-16 border-r-2 border-gray-600">
+    <aside className="h-screen bg-[#0e1111] flex-none sticky top-0 py-16 ">
       {!isSmallScreen && (
         <button
           onClick={() => {
             localStorage.setItem("navbarExpanded", String(!expanded));
             setExpanded((curr) => !curr);
           }}
-          className="p-1.5 rounded-xl bg-white hover:bg-slate-300 absolute -right-4 top-20 text-black"
+          className="p-1.5 rounded-xl absolute -right-1 top-20 text-gray-400"
         >
-          {expanded ? <ChevronFirst /> : <ChevronLast />}
+          {expanded ? <ChevronsLeft /> : <ChevronsRight />}
         </button>
       )}
       <nav
         className={`h-full flex flex-col max-w-60 justify-between overflow-x-hidden transition-all overflow-y-hidden no-scrollbar py-14 ${
           expanded ? "px-10" : "px-4"
-        }`}
+        } border-zinc-800 border-r-2`}
       >
         <div className="flex flex-col justify-between items-center gap-3.5 px-2">
           <span

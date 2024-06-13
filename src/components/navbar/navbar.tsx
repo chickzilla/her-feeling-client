@@ -12,7 +12,7 @@ export default function Navbar() {
     >
       <div className="text-center items-center font-bold flex flex-row justify-between h-full text-sm lg:text-base">
         <Link href="/">
-          <div className="flex flex-row items-center space-x-5">
+          <div className="flex flex-row items-center space-x-5 text-xs lg:text-base">
             <Image
               alt="predict feeling bt text and image classifier model"
               src="/images/logo/logo.png"
@@ -24,11 +24,7 @@ export default function Navbar() {
         </Link>
 
         <NavbarMiddleItem />
-        <div>
-          <Link href="https://github.com/chickzilla/her-feeling-client">
-            <VscGithubInverted className="text-2xl hover:cursor-pointer" />
-          </Link>
-        </div>
+        <div></div>
       </div>
     </nav>
   );

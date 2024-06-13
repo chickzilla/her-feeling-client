@@ -12,7 +12,7 @@ export default function NavbarDropdownItem({
   return (
     <Link
       href={href}
-      className="hover:cursor-pointer text-start p-4 hover:bg-zinc-700 rounded-2xl"
+      className="hover:cursor-pointer text-start p-4 hover:bg-zinc-700 rounded-2xl hover:bg-opacity-70"
     >
       <div className="text-base">{name}</div>
       <div className="w-[15vw] text-[#C2CFD9] text-sm">{description}</div>

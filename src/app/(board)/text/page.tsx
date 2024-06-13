@@ -8,7 +8,7 @@ import { BsEmojiTear } from "react-icons/bs";
 export default function BoardTextPage() {
   return (
     <>
-      <main className="w-[100vw] px-10 lg:px-20 pt-[20px] lg:pt-[100px] space-y-12 min-h-[100vh] overflow-y-hidden text-black bg-black overflow-x-hidden pb-20 bg-gradient-to-r from-black to-slate-900">
+      <main className="w-[100vw] px-10 lg:px-20 pt-[20px] lg:pt-[100px] space-y-12 min-h-[100vh] overflow-y-hidden text-black bg-[#0e1111] overflow-x-hidden pb-20 ">
         <div className="flex flex-col justify-evenly space-y-16 ">
           <div className="flex lg:flex-row flex-col lg:justify-between space-y-12 lg:space-y-0 ">
             <TextAreaBoard />

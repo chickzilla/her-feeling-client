@@ -22,7 +22,7 @@ export default function TextAreaBoard() {
       </div>
       <textarea
         placeholder="Enter her message here!"
-        className="fade-in-delay-0 bg-neutral-800 bg-opacity-70 rounded-3xl p-5 w-[100%] h-[20vh] lg:h-[15vh] border-gray-800 border-2 placeholder-gray-500 text-white description"
+        className="fade-in-delay-0 bg-neutral-800 bg-opacity-70 rounded-3xl p-5 w-[100%] h-[20vh] lg:h-[15vh] border-zinc-800 border-2 placeholder-gray-500 text-white description"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         style={{ resize: "none" }}
