@@ -15,6 +15,7 @@
 
 .move-up {
   animation: moveUp 0.5s ease-in forwards;
+  animation-delay: 0s;
 }
 
 .move-up-delay-1 {
@@ -24,7 +25,12 @@
 
 .move-up-delay-2 {
   animation: moveUp 0.5s ease-in forwards;
-  animation-delay: 0.1s;
+  animation-delay: 0.15s;
+}
+
+.move-up-delay-3 {
+  animation: moveUp 0.5s ease-in forwards;
+  animation-delay: 0.2s;
 }
 
 @keyframes fadeIn {

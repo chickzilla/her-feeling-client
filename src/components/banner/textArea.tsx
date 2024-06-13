@@ -17,7 +17,7 @@ export default function TextArea() {
     }
   }, [message]);
   return (
-    <div className="mt-44 move-up-delay-2 w-[60vw] lg:flex space-y-5 lg:space-y-0 justify-center items-center text-center lg:space-x-10">
+    <div className="mt-44 move-up-delay-2 w-[60vw] lg:flex space-y-5 lg:space-y-0 justify-center items-center text-center lg:space-x-10 move-up-delay-2">
       <div className="space-x-5">
         <Button />
       </div>

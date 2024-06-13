@@ -10,11 +10,11 @@ export default function Banner() {
         Her feeling banner video
       </video>
       <div className="absolute inset-0 flex justify-center flex-col text-center space-y-9 items-center">
-        <div className="px-4 text-5xl md:text-7xl lg:text-8xl text-white text-center">
-          <div className="move-up">Understand Her Emotions</div>
-          <div className="move-up-delay-1">Make Her Proud</div>
+        <div className="px-4 text-5xl md:text-7xl lg:text-8xl text-white text-center move-up">
+          <div className="">Understand Her Emotions</div>
+          <div className="">Make Her Proud</div>
         </div>
-        <div className="text-white move-up-delay-2 text-sm lg:text-base px-5">
+        <div className="text-white move-up-delay-1 text-sm lg:text-base px-5 move-up-delay-1">
           <div>
             By leveraging a text and image classifier model, we can determine
             her emotional state.
