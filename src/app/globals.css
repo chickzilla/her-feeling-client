@@ -108,7 +108,7 @@
   }
 
   .title-2 {
-    @apply text-4xl text-white font-bold;
+    @apply text-4xl text-white font-bold lg:text-6xl;
   }
 
   .description {
