@@ -1,8 +1,8 @@
 import Image from "next/image";
 import NavbarMiddleItem from "./navbar_middle_item";
-import { VscGithubInverted } from "react-icons/vsc";
 
 import Link from "next/link";
+import LoginMenu from "./login-menu";
 export default function Navbar() {
   return (
     <nav
@@ -24,7 +24,9 @@ export default function Navbar() {
         </Link>
 
         <NavbarMiddleItem />
-        <div></div>
+        <div>
+          <LoginMenu />
+        </div>
       </div>
     </nav>
   );
