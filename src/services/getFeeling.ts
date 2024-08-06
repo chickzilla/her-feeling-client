@@ -1,10 +1,10 @@
-import Feeling from "@/interface/feeling";
+import Feeling, { FeelingResponse } from "@/interface/feeling";
 
 export default async function getFeeling({
   prompt,
 }: {
   prompt: string;
-}): Promise<Feeling> {
+}): Promise<FeelingResponse> {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   console.log(API_URL);
 

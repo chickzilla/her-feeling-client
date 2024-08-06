@@ -1,11 +1,15 @@
 "use client";
-import Feeling from "@/interface/feeling";
+import Feeling, { FeelingResponse } from "@/interface/feeling";
 import getFeeling from "@/services/getFeeling";
 import { useEffect, useState } from "react";
 import { useToast } from "../ui/use-toast";
 import { MoveUpRight } from "lucide-react";
 
-export default function TextAreaSendPrompt() {
+export default function TextAreaSendPrompt({
+	setResultPromptToParent,
+}: {
+	setResultPromptToParent: (result: FeelingResponse) => void;
+}) {
 	const [message, setMessage] = useState("");
 	const [isFetching, setIsFetching] = useState<boolean>(false);
 
@@ -21,9 +25,10 @@ export default function TextAreaSendPrompt() {
 		} else {
 			try {
 				setIsFetching(true);
-				const res: Feeling = await getFeeling({ prompt: message });
+				const res: FeelingResponse = await getFeeling({ prompt: message });
 				console.log(res);
 				setIsFetching(false);
+				setResultPromptToParent(res);
 			} catch (e) {
 				if (e instanceof Error) {
 					console.log(e.message);
@@ -54,7 +59,7 @@ export default function TextAreaSendPrompt() {
            hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-gray-600 enabled:hover:bg-white enabled:hover:text-black enabled:hover:shadow-lg transition duration-300 ease-in-out transform enabled:hover:-translate-y-1 enabled:hover:scale-110
           flex justify-center items-center`}
 					onClick={sendPrompt}
-					disabled={isFetching}
+					disabled={isFetching || message.trim() === ""}
 				>
 					<MoveUpRight size={20} />
 				</button>

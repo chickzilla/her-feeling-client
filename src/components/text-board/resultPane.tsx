@@ -1,12 +1,72 @@
 "use client";
+import { FeelingResponse } from "@/interface/feeling";
 import HaveResult from "./have-result";
-import NoResult from "./no-result";
-import { useState } from "react";
-export default function ResultPane() {
-  const [isResult, setIsResult] = useState(true);
-  return (
-    <div className="flex flex-col text-center w-[100%] border-t-2 border-borderColor ">
-      {isResult ? <HaveResult /> : <NoResult />}
-    </div>
-  );
+import { X } from "lucide-react";
+import { useState, useEffect } from "react";
+import {
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerHeader,
+	DrawerTitle,
+} from "../ui/drawer";
+import { Button } from "@mui/material";
+import { Mood } from "@/constant/enum";
+import { MoodDescription } from "@/constant/quote";
+export default function ResultPane({
+	resultPrompt,
+}: {
+	resultPrompt: FeelingResponse | undefined;
+}) {
+	const [isResult, setIsResult] = useState(false);
+	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+	const [highestMood, setHighestMood] = useState<Mood | undefined>(undefined);
+	useEffect(() => {
+		if (resultPrompt === undefined) {
+			setIsResult(false);
+		} else {
+			setIsResult(true);
+			setIsOpenDrawer(true);
+			const maxMood = Math.max(
+				resultPrompt.sadness,
+				resultPrompt.joy,
+				resultPrompt.love,
+				resultPrompt.anger,
+				resultPrompt.fear,
+				resultPrompt.surprise
+			);
+			if (maxMood === resultPrompt.sadness) {
+				setHighestMood(Mood.SADNESS);
+			} else if (maxMood === resultPrompt.joy) {
+				setHighestMood(Mood.JOY);
+			} else if (maxMood === resultPrompt.love) {
+				setHighestMood(Mood.LOVE);
+			} else if (maxMood === resultPrompt.anger) {
+				setHighestMood(Mood.ANGER);
+			} else if (maxMood === resultPrompt.fear) {
+				setHighestMood(Mood.FEAR);
+			} else if (maxMood === resultPrompt.surprise) {
+				setHighestMood(Mood.SURPRISE);
+			}
+		}
+	}, [resultPrompt]);
+
+	return (
+		<>
+			<Drawer open={isOpenDrawer} onOpenChange={setIsOpenDrawer}>
+				<DrawerContent>
+					<DrawerHeader className="flex-col items-center justify-center py-1 space-y-2">
+						<DrawerTitle className="text-white font-bold text-4xl text-center">
+							{highestMood}
+						</DrawerTitle>
+						<DrawerDescription className="text-white text-center px-16">
+							{MoodDescription.get(highestMood as Mood)}
+						</DrawerDescription>
+					</DrawerHeader>
+					<HaveResult resultPrompt={resultPrompt} />{" "}
+				</DrawerContent>
+			</Drawer>
+		</>
+	);
 }
