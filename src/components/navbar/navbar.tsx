@@ -7,7 +7,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 w-screen h-16 px-8 items-center z-50 
-      bg-transparent text-white fade-in-delay-0*
+      bg-transparent text-white fade-in-delay-0* 
       `}
     >
       <div className="text-center items-center font-bold flex flex-row justify-between h-full text-sm lg:text-base">

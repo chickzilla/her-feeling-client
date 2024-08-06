@@ -15,7 +15,7 @@ export default function NavbarDropdownItem({
       className="hover:cursor-pointer text-start p-4 hover:bg-zinc-700 rounded-2xl hover:bg-opacity-70"
     >
       <div className="text-base">{name}</div>
-      <div className="w-[15vw] text-[#C2CFD9] text-sm">{description}</div>
+      <div className="w-[15vw] text-black text-sm">{description}</div>
     </Link>
   );
 }

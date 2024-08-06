@@ -16,13 +16,13 @@ export default function LoginMenu() {
   return (
     <div className="flex flex-row space-x-5 text-xs : lg:text-base font-light">
       <Link
-        href=""
+        href="sign-up"
         className="hover:bg-slate-200 px-4 rounded-xl hover:bg-opacity-20 transition duration-200"
       >
         <div className="hover:cursor-pointer ">Sign up</div>
       </Link>
       <Link
-        href=""
+        href="sign-in"
         className="hover:bg-slate-200 px-4 rounded-xl hover:bg-opacity-20 transition duration-200"
       >
         <div className="hover:cursor-pointer ">Sign in</div>

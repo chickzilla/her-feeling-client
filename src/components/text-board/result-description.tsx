@@ -2,7 +2,7 @@ export default function ResultDescription() {
   return (
     <div className="flex flex-col space-y-4">
       <div className="title-2 text-center text-white">Sadness</div>
-      <div className="description text-start text-white border-zinc-800 border-2 py-6 px-10 rounded-2xl">
+      <div className="description text-start text-white border-borderColor border-2 py-6 px-10 rounded-2xl">
         You find yourself standing at the edge of a vast, deserted field as the
         sun begins to set, casting long, melancholic shadows across the land.
         The air is thick with the scent of rain, though none has fallen yet. In

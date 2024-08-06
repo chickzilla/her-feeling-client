@@ -27,11 +27,13 @@ const config = {
         xl: "1.25rem", // Extra large screens
       },
       colors: {
-        pink: "bg-pink-500",
+        coffeeBlack: "var(--coffeeBlack)",
+        blackGray: "var(--blackGray)",
+        borderColor: "var(--borderColor)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        background: "hsl(var(--blackBackGround))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",

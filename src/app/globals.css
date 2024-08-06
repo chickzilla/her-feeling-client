@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --coffeeBlack: #000000;
+    --blackGray: #000000;
+    --borderColor: #71717a;
+  }
+}
+
 @keyframes moveUp {
   from {
     opacity: 0;
@@ -104,7 +112,7 @@
 
 @layer components {
   .title-1 {
-    @apply text-4xl lg:text-5xl text-white font-semibold;
+    @apply text-4xl lg:text-7xl text-white font-semibold;
   }
 
   .title-2 {
