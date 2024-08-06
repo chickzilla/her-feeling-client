@@ -11,8 +11,8 @@ export default function HaveResult({
 	resultPrompt: FeelingResponse | undefined;
 }) {
 	return (
-		<div className=" items-center justify-center text-center text-black space-y-6 w-full py-10 ">
-			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-5 py-10 ">
+		<div className=" items-center justify-center text-center text-black space-y-6 w-full pb-10">
+			<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-5 py-10">
 				<div className="">
 					<ResultItem
 						mood="Sad"

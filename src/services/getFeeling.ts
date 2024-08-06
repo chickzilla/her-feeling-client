@@ -6,8 +6,7 @@ export default async function getFeeling({
   prompt: string;
 }): Promise<FeelingResponse> {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
-  console.log(API_URL);
-
+  
   const encodedprompt = encodeURIComponent(prompt);
   const response = await fetch(
     `${API_URL}/result-text?prompt=${encodedprompt}`

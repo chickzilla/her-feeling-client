@@ -12,12 +12,18 @@ import {
 	NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import NavbarDropdownItem from "./nav_bar_dropdown_item";
+import Link from "next/link";
 
 export default function NavbarMiddleItem() {
 	const router = useRouter();
 	return (
 		<div className="text-center items-center font-light flex flex-row space-x-7">
-			<div className="hover:cursor-pointer text-xs : lg:text-base">History</div>
+			<Link
+				href="sign-up"
+				className="hover:bg-slate-200 px-4 rounded-xl hover:bg-opacity-20 transition duration-200"
+			>
+				<div className="hover:cursor-pointer ">History</div>
+			</Link>
 			<NavigationMenu>
 				<NavigationMenuList>
 					<NavigationMenuItem className="">
@@ -41,14 +47,12 @@ export default function NavbarMiddleItem() {
 					</NavigationMenuItem>
 				</NavigationMenuList>
 			</NavigationMenu>
-			<div
-				className="hover:cursor-pointer text-xs : lg:text-base"
-				onClick={() => {
-					router.push("https://github.com/chickzilla/her-feeling-client");
-				}}
+			<Link
+				href="https://github.com/chickzilla/her-feeling-client"
+				className="hover:bg-slate-200 px-4 rounded-xl hover:bg-opacity-20 transition duration-200"
 			>
-				Github
-			</div>
+				<div className="hover:cursor-pointer ">Github</div>
+			</Link>
 		</div>
 	);
 }

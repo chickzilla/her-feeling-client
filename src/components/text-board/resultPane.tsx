@@ -14,10 +14,15 @@ import {
 import { Button } from "@mui/material";
 import { Mood } from "@/constant/enum";
 import { MoodDescription } from "@/constant/quote";
+import NoResult from "./no-result";
+import { Send } from "lucide-react";
+
 export default function ResultPane({
 	resultPrompt,
+	openResultFromParent,
 }: {
 	resultPrompt: FeelingResponse | undefined;
+	openResultFromParent: boolean | undefined;
 }) {
 	const [isResult, setIsResult] = useState(false);
 	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
@@ -52,20 +57,37 @@ export default function ResultPane({
 		}
 	}, [resultPrompt]);
 
+	useEffect(() => {
+		if (openResultFromParent !== undefined) {
+			setIsOpenDrawer(true);
+		}
+	}, [openResultFromParent]);
+
 	return (
 		<>
 			<Drawer open={isOpenDrawer} onOpenChange={setIsOpenDrawer}>
-				<DrawerContent>
-					<DrawerHeader className="flex-col items-center justify-center py-1 space-y-2">
-						<DrawerTitle className="text-white font-bold text-4xl text-center">
-							{highestMood}
-						</DrawerTitle>
-						<DrawerDescription className="text-white text-center px-16">
-							{MoodDescription.get(highestMood as Mood)}
-						</DrawerDescription>
-					</DrawerHeader>
-					<HaveResult resultPrompt={resultPrompt} />{" "}
-				</DrawerContent>
+				{isResult ? (
+					<DrawerContent>
+						<DrawerHeader className="flex-col items-center justify-center py-1 space-y-2">
+							<DrawerTitle className="text-white font-bold text-4xl text-center">
+								{highestMood}
+							</DrawerTitle>
+							<DrawerDescription className="text-white text-center px-16">
+								{MoodDescription.get(highestMood as Mood)}
+							</DrawerDescription>
+						</DrawerHeader>
+						<HaveResult resultPrompt={resultPrompt} />{" "}
+					</DrawerContent>
+				) : (
+					<DrawerContent className="pb-10">
+						<DrawerHeader className="flex-col items-center justify-center space-y-2">
+							<DrawerTitle className="text-white font-bold text-4xl text-center">
+								No Result
+							</DrawerTitle>
+						</DrawerHeader>
+						<NoResult />
+					</DrawerContent>
+				)}
 			</Drawer>
 		</>
 	);
