@@ -27,7 +27,7 @@ export default function NavbarMiddleItem({
 			}`}
 		>
 			<Link
-				href="sign-up"
+				href="/board/history"
 				className="hover:bg-slate-200 px-4 rounded-xl hover:bg-opacity-20 transition duration-200"
 			>
 				<div className="hover:cursor-pointer ">History</div>
