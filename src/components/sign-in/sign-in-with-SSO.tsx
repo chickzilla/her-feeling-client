@@ -1,12 +1,12 @@
 "use client";
-import { useState, useEffect, use } from "react";
-import { GoogleLogin } from "@react-oauth/google";
+import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "../ui/use-toast";
 import authWithSSO from "@/services/authWithSSO";
 import { setItemToLocalStorage } from "@/lib/localstorage";
-import { set } from "zod";
 import { useRouter } from "next/navigation";
+import { useGoogleLogin } from "@react-oauth/google";
+import Image from "next/image";
 
 export default function SignInWithSSO({
 	setParentRedered,
@@ -68,6 +68,11 @@ export default function SignInWithSSO({
 		});
 	};
 
+	const googleLogin = useGoogleLogin({
+		onSuccess: onSuccess,
+		onError: onFailure,
+	});
+
 	useEffect(() => {
 		setIsRendered(true);
 		setParentRedered(true);
@@ -82,14 +87,18 @@ export default function SignInWithSSO({
 				<div className="flex-grow border-t-2 border-gray-400"></div>
 			</div>
 			<div className="w-full items-center flex flex-col">
-				<GoogleLogin
-					onSuccess={onSuccess}
-					onError={onFailure}
-					state_cookie_domain={undefined}
-					text="continue_with"
-					size="large"
-					width="300px"
-				/>
+				<button
+					onClick={() => googleLogin()}
+					className="w-[40vw] lg:w-[20vw] border-gray-500 rounded-lg border-[1px] px-4 py-4 flex flex-row justify-start space-x-3 font-light hover:bg-zinc-100 hover:cursor-pointer"
+				>
+					<Image
+						src="/images/google-logo-2.svg"
+						alt="Google Icon"
+						width={25}
+						height={25}
+					/>
+					<div>Continue With Google</div>
+				</button>
 			</div>
 		</div>
 	);
