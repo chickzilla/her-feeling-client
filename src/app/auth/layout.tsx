@@ -8,6 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			<div className="flex">
 				<Navbar isTextBlack={true} />
 				{children}
+				<Toaster />
 			</div>
 		</>
 	);

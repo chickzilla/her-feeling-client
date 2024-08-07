@@ -14,8 +14,14 @@ import {
 	FormMessage,
 } from "../ui/form";
 import { textFieldWhiteStyle } from "@/style/text-field-mui-style";
+import SignUp from "@/services/signUp";
+import { useToast } from "../ui/use-toast";
+import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
+	const { toast } = useToast();
+	const router = useRouter();
+
 	const form = useForm<z.infer<typeof signUpSchema>>({
 		resolver: zodResolver(signUpSchema),
 	});
@@ -26,18 +32,40 @@ export default function SignUpForm() {
 	);
 
 	async function onSubmit() {
-		try {
-			console.log(form.getValues());
-		} catch (error) {
-			console.error(error);
-		}
+		const { email, password } = form.getValues();
+		console.log(email, password);
+
+		await SignUp({ email, password })
+			.then((res) => {
+				if (res?.error) {
+					toast({
+						title: "Create an account failed",
+						description: res?.error,
+						isError: true,
+					});
+				} else {
+					toast({
+						title: "Create an account success",
+						description: "redirecting to sign in page",
+						isError: false,
+					});
+					router.push("/auth/sign-in");
+				}
+			})
+			.catch((e) => {
+				toast({
+					title: "Something went wrong",
+					description: "Please try again later",
+					isError: true,
+				});
+			});
 	}
 
 	return (
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="p-5 flex flex-col space-y-8"
+				className="p-5 flex flex-col space-y-8 items-center"
 			>
 				<FormField
 					control={form.control}
@@ -50,10 +78,9 @@ export default function SignUpForm() {
 									label="Email"
 									variant="outlined"
 									sx={textFieldWhiteStyle}
-									className="w-[20vw]"
+									className="w-[40vw] lg:w-[20vw]"
 								/>
 							</FormControl>
-							<FormMessage />
 						</FormItem>
 					)}
 				/>
@@ -68,10 +95,10 @@ export default function SignUpForm() {
 									label="Password"
 									variant="outlined"
 									sx={textFieldWhiteStyle}
-									className="w-[20vw]"
+									className="w-[40vw] lg:w-[20vw]"
+									type="password"
 								/>
 							</FormControl>
-							<FormMessage />
 						</FormItem>
 					)}
 				/>
@@ -86,16 +113,16 @@ export default function SignUpForm() {
 									label="Confirm Password"
 									variant="outlined"
 									sx={textFieldWhiteStyle}
-									className="w-[20vw]"
+									className="w-[40vw] lg:w-[20vw]"
+									type="password"
 								/>
 							</FormControl>
-							<FormMessage />
 						</FormItem>
 					)}
 				/>
 				<button
 					disabled={isDisabled}
-					className={`text-white hover:cursor-pointer border w-[20vw] h-10 bg-orange-400 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-80 duration-75 transition`}
+					className={`text-white hover:cursor-pointer border w-[40vw] lg:w-[20vw] h-10 bg-orange-400 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-80 duration-75 transition`}
 					onClick={onSubmit}
 				>
 					Sign Up
