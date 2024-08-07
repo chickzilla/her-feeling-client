@@ -1,9 +1,14 @@
 import Image from "next/image";
 import NavbarMiddleItem from "./navbar_middle_item";
-
+import { cookies } from "next/headers";
 import Link from "next/link";
 import LoginMenu from "./login-menu";
+import AvartarProfile from "./avatarProfile";
+
 export default function Navbar({ isTextBlack }: { isTextBlack: boolean }) {
+	const cookieStore = cookies();
+	const auth = cookieStore.get("auth_token");
+
 	return (
 		<nav
 			className={`fixed top-0 w-screen h-16 px-8 items-center z-50 
@@ -26,9 +31,13 @@ export default function Navbar({ isTextBlack }: { isTextBlack: boolean }) {
 				</Link>
 
 				<NavbarMiddleItem isTextBlack={isTextBlack} />
-				<div>
-					<LoginMenu isTextBlack={isTextBlack} />
-				</div>
+				{auth ? (
+					<AvartarProfile />
+				) : (
+					<div>
+						<LoginMenu isTextBlack={isTextBlack} />
+					</div>
+				)}
 			</div>
 		</nav>
 	);

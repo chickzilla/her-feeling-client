@@ -42,7 +42,7 @@ export default function SignInForm() {
 						isError: false,
 					});
 
-					router.push("/board/text");
+					window.location.href = "/board/text";
 				}
 			})
 			.catch(() => {

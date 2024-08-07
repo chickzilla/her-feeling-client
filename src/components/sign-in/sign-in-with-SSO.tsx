@@ -48,7 +48,7 @@ export default function SignInWithSSO({
 					isError: false,
 				});
 
-				router.push("/board/text");
+				window.location.href = "/board/text";
 			} catch (error) {
 				console.log(error);
 				toast({
