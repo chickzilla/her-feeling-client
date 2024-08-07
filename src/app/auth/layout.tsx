@@ -1,5 +1,5 @@
 import { Toaster } from "@/components/alert/toaster";
-import NavbarDashBoard from "@/components/navbar/dashboard/navbar-dashboard";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import Navbar from "@/components/navbar/navbar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -7,7 +7,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 		<>
 			<div className="flex">
 				<Navbar isTextBlack={true} />
-				{children}
+				<GoogleOAuthProvider
+					clientId={process.env.NEXT_PUBLIC_GOOGLE_CREDENTIALS_LOGIN || ""}
+				>
+					{children}
+				</GoogleOAuthProvider>
 				<Toaster />
 			</div>
 		</>

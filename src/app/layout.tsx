@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Prompt } from "next/font/google";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+
 import "./globals.css";
 
 const inter = Prompt({

@@ -1,15 +1,3 @@
-"use client";
-import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuIndicator,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-	NavigationMenuTrigger,
-	NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
-import NavbarDropdownItem from "./nav_bar_dropdown_item";
 import Link from "next/link";
 
 export default function LoginMenu({ isTextBlack }: { isTextBlack: boolean }) {
