@@ -1,5 +1,4 @@
 "use client";
-import { signUpSchema } from "@/schema/sign-up-form-schema";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,6 +10,7 @@ import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import { signInSchema } from "@/schema/sign-in-form-schema";
 import SignIn from "@/services/signIn";
+import { setItemToLocalStorage } from "@/lib/localstorage";
 
 export default function SignInForm() {
 	const { toast } = useToast();
@@ -38,11 +38,17 @@ export default function SignInForm() {
 					});
 				} else {
 					toast({
-						title: "Create an account success",
-						description: "redirecting to sign in page",
+						title: "Login success",
+						description: "Welcome back",
 						isError: false,
 					});
-					console.log(res?.response);
+
+					setItemToLocalStorage({
+						key: "jwt_token",
+						value: String(res.response),
+					});
+
+					router.push("/board/text");
 				}
 			})
 			.catch(() => {
