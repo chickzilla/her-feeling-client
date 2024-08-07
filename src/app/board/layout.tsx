@@ -1,14 +1,16 @@
 import { Toaster } from "@/components/alert/toaster";
 import NavbarDashBoard from "@/components/navbar/dashboard/navbar-dashboard";
+import Navbar from "@/components/navbar/navbar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <div className="flex">
-        <NavbarDashBoard />
-        {children}
-        <Toaster />
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className="flex">
+				<Navbar isTextBlack={false} />
+				<NavbarDashBoard />
+				{children}
+				<Toaster />
+			</div>
+		</>
+	);
 }

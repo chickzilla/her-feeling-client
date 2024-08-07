@@ -14,10 +14,18 @@ import {
 import NavbarDropdownItem from "./nav_bar_dropdown_item";
 import Link from "next/link";
 
-export default function NavbarMiddleItem() {
+export default function NavbarMiddleItem({
+	isTextBlack,
+}: {
+	isTextBlack: boolean;
+}) {
 	const router = useRouter();
 	return (
-		<div className="text-center items-center font-light flex flex-row space-x-7">
+		<div
+			className={`text-center items-center font-light flex flex-row space-x-7 ${
+				isTextBlack ? "text-black" : "text-white"
+			}`}
+		>
 			<Link
 				href="sign-up"
 				className="hover:bg-slate-200 px-4 rounded-xl hover:bg-opacity-20 transition duration-200"
@@ -34,12 +42,12 @@ export default function NavbarMiddleItem() {
 							<div className=" bg-black rounded-2xl border-2 border-borderColor bg-opacity-30 p-3 flex flex-row space-x-5 ">
 								<NavbarDropdownItem
 									name="Text"
-									href="/text"
+									href="/board/text"
 									description="From text alone, we can gauge her feelings."
 								/>
 								<NavbarDropdownItem
 									name="Image"
-									href="/image"
+									href="/board/image"
 									description="By looking at her image, we can determine her feelings."
 								/>
 							</div>
