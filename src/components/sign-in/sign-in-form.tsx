@@ -5,25 +5,19 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMemo } from "react";
 import TextField from "@mui/material/TextField/TextField";
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "../ui/form";
+import { Form, FormControl, FormField, FormItem } from "../ui/form";
 import { textFieldWhiteStyle } from "@/style/text-field-mui-style";
-import SignUp from "@/services/signUp";
 import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
+import { signInSchema } from "@/schema/sign-in-form-schema";
+import SignIn from "@/services/signIn";
 
-export default function SignUpForm() {
+export default function SignInForm() {
 	const { toast } = useToast();
 	const router = useRouter();
 
-	const form = useForm<z.infer<typeof signUpSchema>>({
-		resolver: zodResolver(signUpSchema),
+	const form = useForm<z.infer<typeof signInSchema>>({
+		resolver: zodResolver(signInSchema),
 	});
 
 	const isDisabled = useMemo(
@@ -34,11 +28,11 @@ export default function SignUpForm() {
 	async function onSubmit() {
 		const { email, password } = form.getValues();
 
-		await SignUp({ email, password })
+		await SignIn({ email, password })
 			.then((res) => {
 				if (res?.error) {
 					toast({
-						title: "Create an account failed",
+						title: "Cannot sign in",
 						description: res?.error,
 						isError: true,
 					});
@@ -48,10 +42,10 @@ export default function SignUpForm() {
 						description: "redirecting to sign in page",
 						isError: false,
 					});
-					router.push("/auth/sign-in");
+					console.log(res?.response);
 				}
 			})
-			.catch((e) => {
+			.catch(() => {
 				toast({
 					title: "Something went wrong",
 					description: "Please try again later",
@@ -101,30 +95,12 @@ export default function SignUpForm() {
 						</FormItem>
 					)}
 				/>
-				<FormField
-					control={form.control}
-					name="confirmPassword"
-					render={({ field }) => (
-						<FormItem>
-							<FormControl>
-								<TextField
-									{...field}
-									label="Confirm Password"
-									variant="outlined"
-									sx={textFieldWhiteStyle}
-									className="w-[40vw] lg:w-[20vw]"
-									type="password"
-								/>
-							</FormControl>
-						</FormItem>
-					)}
-				/>
 				<button
 					disabled={isDisabled}
 					className={`text-white hover:cursor-pointer border w-[40vw] lg:w-[20vw] h-10 bg-orange-400 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-80 duration-75 transition`}
 					onClick={onSubmit}
 				>
-					Sign Up
+					Sign In
 				</button>
 			</form>
 		</Form>
