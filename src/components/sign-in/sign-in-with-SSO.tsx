@@ -1,8 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "../ui/use-toast";
+import authWithSSO from "@/services/authWithSSO";
+import { setItemToLocalStorage } from "@/lib/localstorage";
+import { set } from "zod";
+import { useRouter } from "next/navigation";
 
 export default function SignInWithSSO({
 	setParentRedered,
@@ -10,32 +14,56 @@ export default function SignInWithSSO({
 	setParentRedered: (isRendered: boolean) => void;
 }) {
 	const [isRendered, setIsRendered] = useState(false);
+	const router = useRouter();
 
-	const onSuccess = (response: any) => {
-		try {
-			const token = response.credential;
+	const onSuccess = async (response: any) => {
+		const token = response.credential;
 
-			if (token) {
-				const decodedToken: any = jwtDecode(token);
-				const userProfile = {
-					name: decodedToken.name,
-					email: decodedToken.email,
-					picture: decodedToken.picture,
-				};
+		if (token) {
+			const decodedToken: any = jwtDecode(token);
+			const userProfile = {
+				email: decodedToken.email,
+				picture: decodedToken.picture,
+			};
+
+			try {
+				const email = userProfile.email;
+				const response = await authWithSSO({ email });
+				if (response.error) {
+					toast({
+						title: "Cannot sign in with Google",
+						description: response.error,
+						isError: true,
+					});
+				}
+
+				setItemToLocalStorage({
+					key: "profile_image",
+					value: userProfile.picture,
+				});
+
+				toast({
+					title: "Login success",
+					description: "Welcome back",
+					isError: false,
+				});
+
+				router.push("/board/text");
+			} catch (error) {
+				console.log(error);
+				toast({
+					title: "Cannot sign in with Google",
+					description: "Failed to sign in with Google",
+					isError: true,
+				});
 			}
-		} catch (error) {
-			toast({
-				title: "Cannot sign in",
-				description: "Failed to decode credentials",
-				isError: true,
-			});
 		}
 	};
 
-	const onFailure = (response: any) => {
+	const onFailure = () => {
 		toast({
 			title: "Cannot sign in",
-			description: response.error,
+			description: "Failed to sign in with Google",
 			isError: true,
 		});
 	};
@@ -56,6 +84,8 @@ export default function SignInWithSSO({
 			<div className="w-full items-center flex flex-col">
 				<GoogleLogin
 					onSuccess={onSuccess}
+					onError={onFailure}
+					state_cookie_domain={undefined}
 					text="continue_with"
 					size="large"
 					width="300px"

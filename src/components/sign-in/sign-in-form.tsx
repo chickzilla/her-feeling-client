@@ -10,7 +10,6 @@ import { useToast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import { signInSchema } from "@/schema/sign-in-form-schema";
 import SignIn from "@/services/signIn";
-import { setItemToLocalStorage } from "@/lib/localstorage";
 
 export default function SignInForm() {
 	const { toast } = useToast();
@@ -41,11 +40,6 @@ export default function SignInForm() {
 						title: "Login success",
 						description: "Welcome back",
 						isError: false,
-					});
-
-					setItemToLocalStorage({
-						key: "jwt_token",
-						value: String(res.response),
 					});
 
 					router.push("/board/text");
