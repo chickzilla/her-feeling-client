@@ -1,3 +1,116 @@
+"use client";
+import { columns } from "@/components/history/column";
+import { DataTable } from "@/components/history/data-table";
+import { toast } from "@/components/ui/use-toast";
+import { History, HistoryForTable, HistoryResponse } from "@/interface/history";
+import GetHistories from "@/services/getHistories";
+import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const options = {
+	day: "2-digit",
+	month: "2-digit",
+	year: "numeric",
+	hour: "2-digit",
+	minute: "2-digit",
+	second: "2-digit",
+	hour12: false, // Use 24-hour time
+};
+
 export default function Page() {
-	return <div></div>;
+	const [history, setHistory] = useState<History[]>([]);
+	const [loading, setLoading] = useState<boolean>(true);
+	const [limit, setLimit] = useState<number>(5);
+	const [page, setPage] = useState<number>(1);
+	const [totalRecord, setTotalRecord] = useState<number>(0);
+	const [countRecord, setCountRecord] = useState<number>(0);
+
+	const fetchHistory = async (pageOnclick?: number) => {
+		try {
+			console.log("fetching history");
+			console.log("page", page);
+
+			const usedPage = pageOnclick ? pageOnclick : page;
+			const res: HistoryResponse = await GetHistories({
+				limit,
+				offset: limit * (usedPage - 1),
+			});
+			if (res?.error) {
+				toast({
+					title: "Cannot get histories",
+					description: res.error,
+					isError: true,
+				});
+			}
+			if (res?.data) {
+				setHistory(res.data?.items);
+				setTotalRecord(res.data?.metaData?.total);
+				setCountRecord(res.data?.metaData?.count);
+			}
+		} catch (e) {
+			console.error(e);
+			toast({
+				title: "Cannot get histories",
+				description: "Failed to get histories",
+				isError: true,
+			});
+		}
+	};
+
+	useEffect(() => {
+		fetchHistory();
+		setLoading(false);
+	}, []);
+
+	const nextPage = () => {
+		if (limit * page >= totalRecord) {
+			return;
+		}
+		fetchHistory(page + 1);
+		setPage(page + 1);
+	};
+
+	const prevPage = () => {
+		if (page <= 1) {
+			return;
+		}
+		fetchHistory(page - 1);
+		setPage(page - 1);
+	};
+	return (
+		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 py-[150px]">
+			<div className="text-white font-bold text-4xl">Your History 👇</div>
+			<div className="w-full flex flex-col">
+				<div className="flex items-center justify-end space-x-6 py-4 w-full text-[#65767E]">
+					<div>
+						<span className="text-[#65767E] text-sm">
+							{limit * (page - 1) + countRecord} of {totalRecord} Records
+						</span>
+					</div>
+					<div className="flex space-x-2 ">
+						<ChevronLeft
+							className={`hover:cursor-pointer ${
+								page <= 1 ? "text-black hover:cursor-default" : ""
+							} text-xs`}
+							onClick={prevPage}
+						/>
+						<span className="text-[#65767E] text-sm">{page}</span>
+						<ChevronRight
+							className={`cursor-pointer ${
+								limit * page >= totalRecord
+									? "text-black hover:cursor-default"
+									: ""
+							} text-xs`}
+							onClick={nextPage}
+						/>
+					</div>
+				</div>
+				{!loading && (
+					<div className="w-full flex flex-col items-start text-[#65767E]">
+						<DataTable columns={columns} data={history} />
+					</div>
+				)}
+			</div>
+		</main>
+	);
 }
