@@ -8,7 +8,7 @@ export const columns: ColumnDef<History>[] = [
 	},
 	{
 		accessorKey: "SadnessProb",
-		header: "Sadness",
+		header: "Sad",
 	},
 	{
 		accessorKey: "LoveProb",

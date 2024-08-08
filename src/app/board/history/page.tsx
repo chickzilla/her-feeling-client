@@ -2,20 +2,11 @@
 import { columns } from "@/components/history/column";
 import { DataTable } from "@/components/history/data-table";
 import { toast } from "@/components/ui/use-toast";
-import { History, HistoryForTable, HistoryResponse } from "@/interface/history";
+import { History, HistoryResponse } from "@/interface/history";
 import GetHistories from "@/services/getHistories";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const options = {
-	day: "2-digit",
-	month: "2-digit",
-	year: "numeric",
-	hour: "2-digit",
-	minute: "2-digit",
-	second: "2-digit",
-	hour12: false, // Use 24-hour time
-};
+import SelectPanel from "@/components/history/selectPanel";
 
 export default function Page() {
 	const [history, setHistory] = useState<History[]>([]);
@@ -24,16 +15,17 @@ export default function Page() {
 	const [page, setPage] = useState<number>(1);
 	const [totalRecord, setTotalRecord] = useState<number>(0);
 	const [countRecord, setCountRecord] = useState<number>(0);
+	const [sortBy, setSortBy] = useState<string>("createdAt");
+	const [sortOrder, setSortOrder] = useState<string>("desc");
 
 	const fetchHistory = async (pageOnclick?: number) => {
 		try {
-			console.log("fetching history");
-			console.log("page", page);
-
 			const usedPage = pageOnclick ? pageOnclick : page;
 			const res: HistoryResponse = await GetHistories({
 				limit,
 				offset: limit * (usedPage - 1),
+				sortBy,
+				orderBy: sortOrder,
 			});
 			if (res?.error) {
 				toast({
@@ -43,6 +35,7 @@ export default function Page() {
 				});
 			}
 			if (res?.data) {
+				console.log(res.data);
 				setHistory(res.data?.items);
 				setTotalRecord(res.data?.metaData?.total);
 				setCountRecord(res.data?.metaData?.count);
@@ -77,32 +70,47 @@ export default function Page() {
 		fetchHistory(page - 1);
 		setPage(page - 1);
 	};
+
+	useEffect(() => {
+		fetchHistory(1);
+		setPage(1);
+	}, [sortBy, sortOrder]);
 	return (
 		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 py-[150px]">
 			<div className="text-white font-bold text-4xl">Your History 👇</div>
 			<div className="w-full flex flex-col">
-				<div className="flex items-center justify-end space-x-6 py-4 w-full text-[#65767E]">
-					<div>
-						<span className="text-[#65767E] text-sm">
-							{limit * (page - 1) + countRecord} of {totalRecord} Records
-						</span>
-					</div>
-					<div className="flex space-x-2 ">
-						<ChevronLeft
-							className={`hover:cursor-pointer ${
-								page <= 1 ? "text-black hover:cursor-default" : ""
-							} text-xs`}
-							onClick={prevPage}
-						/>
-						<span className="text-[#65767E] text-sm">{page}</span>
-						<ChevronRight
-							className={`cursor-pointer ${
-								limit * page >= totalRecord
-									? "text-black hover:cursor-default"
-									: ""
-							} text-xs`}
-							onClick={nextPage}
-						/>
+				<div className="flex items-end justify-between space-x-6 py-4 w-full text-[#65767E]">
+					<SelectPanel
+						setSortByToParent={(sort: string) => {
+							setSortBy(sort);
+						}}
+						setOrderByToParent={(order: string) => {
+							setSortOrder(order);
+						}}
+					/>
+					<div className="flex">
+						<div className="">
+							<span className="text-[#65767E] text-sm">
+								{limit * (page - 1) + countRecord} of {totalRecord} Records
+							</span>
+						</div>
+						<div className="flex space-x-2 ">
+							<ChevronLeft
+								className={`hover:cursor-pointer ${
+									page <= 1 ? "text-black hover:cursor-default" : ""
+								} text-xs`}
+								onClick={prevPage}
+							/>
+							<span className="text-[#65767E] text-sm">{page}</span>
+							<ChevronRight
+								className={`cursor-pointer ${
+									limit * page >= totalRecord
+										? "text-black hover:cursor-default"
+										: ""
+								} text-xs`}
+								onClick={nextPage}
+							/>
+						</div>
 					</div>
 				</div>
 				{!loading && (
