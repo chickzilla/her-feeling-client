@@ -25,10 +25,54 @@ import {
 	DialogTitle,
 	DialogDescription,
 } from "@/components/ui/dialog";
+import { MoodDescriptionEmojiHistory } from "@/constant/emoji";
 
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
 	data: TData[];
+}
+
+function getMostProbableEmotion(data: any) {
+	const emotions = {
+		Sad: data.SadnessProb,
+		Love: data.LoveProb,
+		Joy: data.JoyProb,
+		Angry: data.AngryProb,
+		Fear: data.FearProb,
+		Surprise: data.SurpriseProb,
+	};
+
+	const [mostProbableEmotion, maxProb] = Object.entries(emotions).reduce(
+		([maxEmotion, maxValue], [currentEmotion, currentValue]) =>
+			currentValue > maxValue
+				? [currentEmotion, currentValue]
+				: [maxEmotion, maxValue],
+		["", -Infinity]
+	);
+
+	return `${MoodDescriptionEmojiHistory.get(
+		mostProbableEmotion
+	)} ${mostProbableEmotion} (${(maxProb * 100).toFixed(2)}%)`;
+}
+
+function getHighestProbKey(data: any) {
+	const emotions = {
+		SadnessProb: data.SadnessProb,
+		LoveProb: data.LoveProb,
+		JoyProb: data.JoyProb,
+		AngryProb: data.AngryProb,
+		FearProb: data.FearProb,
+		SurpriseProb: data.SurpriseProb,
+	};
+
+	// Find the key with the highest probability
+	const [highestProbKey] = Object.entries(emotions).reduce(
+		([maxKey, maxValue], [currentKey, currentValue]) =>
+			currentValue > maxValue ? [currentKey, currentValue] : [maxKey, maxValue],
+		["", -Infinity]
+	);
+
+	return highestProbKey;
 }
 
 export function DataTable<TData, TValue>({
@@ -70,23 +114,38 @@ export function DataTable<TData, TValue>({
 					))}
 				</TableHeader>
 				<TableBody>
-					{data.length ? (
-						table.getRowModel().rows.map((row, index) => (
-							<TableRow
-								key={row.id}
-								data-state={row.getIsSelected() && "selected"}
-								className={`${
-									index % 2 === 0 ? "bg-[#272731]" : "bg-[#2A2A35]"
-								} text-gray-200 text-xs hover:bg-black hover:cursor-pointer`}
-								onClick={() => handleRowClick(row.original)}
-							>
-								{row.getVisibleCells().map((cell) => (
-									<TableCell key={cell.id}>
-										{flexRender(cell.column.columnDef.cell, cell.getContext())}
-									</TableCell>
-								))}
-							</TableRow>
-						))
+					{data ? (
+						table.getRowModel().rows.map((row, index) => {
+							// Determine the highest probability for the current row
+							const highestProbKey = getHighestProbKey(row.original as any);
+
+							return (
+								<TableRow
+									key={row.id}
+									data-state={row.getIsSelected() && "selected"}
+									className={`${
+										index % 2 === 0 ? "bg-[#272731]" : "bg-[#2A2A35]"
+									} text-gray-200 text-xs hover:bg-black hover:cursor-pointer`}
+									onClick={() => handleRowClick(row.original)}
+								>
+									{row.getVisibleCells().map((cell) => (
+										<TableCell
+											key={cell.id}
+											className={
+												cell.column.id === highestProbKey
+													? "text-green-400 font-bold"
+													: ""
+											}
+										>
+											{flexRender(
+												cell.column.columnDef.cell,
+												cell.getContext()
+											)}
+										</TableCell>
+									))}
+								</TableRow>
+							);
+						})
 					) : (
 						<TableRow>
 							<TableCell colSpan={columns.length} className="h-24 text-center">
@@ -98,16 +157,29 @@ export function DataTable<TData, TValue>({
 			</Table>
 
 			<Dialog open={isDialogOpen} onOpenChange={() => setIsDialogOpen(false)}>
-				<DialogTrigger asChild></DialogTrigger>
-				<DialogContent className="text-white min-h-[40vh]">
+				<DialogContent className="text-gray-200 w-[60vw]">
 					<DialogHeader>
-						<DialogTitle className="text-center">Prompt</DialogTitle>
-						<DialogDescription>
-							{selectedRowData
-								? (selectedRowData as any).Prompt || "No Prompt available"
-								: "No data available."}
-						</DialogDescription>
+						<DialogTitle className="text-center text-lg">Prompt</DialogTitle>
 					</DialogHeader>
+					<div className="overflow-y-scroll w-full h-[40vh] p-4 text-sm bg-zinc-300 text-black rounded-lg">
+						{selectedRowData
+							? (selectedRowData as any).Prompt || "No Prompt available"
+							: "No data available."}
+					</div>
+					<div className="flex w-full justify-between flex-row">
+						<div className="p-4">
+							{selectedRowData
+								? (selectedRowData as any).CreatedAt ||
+								  "No Description available"
+								: "No data available."}
+						</div>
+						<div className="p-4">
+							{selectedRowData
+								? getMostProbableEmotion(selectedRowData as any) ||
+								  "No Description available"
+								: "No data available."}
+						</div>
+					</div>
 				</DialogContent>
 			</Dialog>
 		</div>

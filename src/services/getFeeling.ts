@@ -7,14 +7,13 @@ export default async function getFeeling({
 }): Promise<FeelingResponse> {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   
-  const encodedprompt = encodeURIComponent(prompt);
   const response = await fetch(
     `${API_URL}/result-text`, {
       method: 'POST',
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ prompt : encodedprompt }),
+        body: JSON.stringify({ prompt : prompt }),
       credentials: 'include'
     }
   );

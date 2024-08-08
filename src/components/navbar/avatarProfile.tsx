@@ -31,6 +31,10 @@ export default function AvatarProfile() {
 		setAnchorEl(null);
 	};
 
+	const handleHistory = () => {
+		window.location.href = "/board/history";
+	};
+
 	const signOut = async () => {
 		localStorage.removeItem("profile_image");
 
@@ -78,7 +82,7 @@ export default function AvatarProfile() {
 				slotProps={dropDownMenuStyle}
 			>
 				<MenuItem
-					onClick={handleClose}
+					onClick={handleHistory}
 					className="text-sm text-white w-48 hover:bg-zinc-600 bg-transparent rounded-xl py-2"
 				>
 					<ListItemIcon>
