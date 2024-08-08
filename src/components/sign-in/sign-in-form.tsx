@@ -102,6 +102,15 @@ export default function SignInForm() {
 				>
 					Sign In
 				</button>
+				<div>
+					<span className="text-black">Don't have an account?</span>
+					<span
+						className="hover:cursor-pointer text-orange-400 ml-3"
+						onClick={() => router.push("/auth/sign-up")}
+					>
+						Sign Up
+					</span>
+				</div>
 			</form>
 		</Form>
 	);
