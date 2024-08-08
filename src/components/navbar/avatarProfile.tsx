@@ -18,12 +18,15 @@ import { toast } from "../ui/use-toast";
 
 export default function AvatarProfile() {
 	const [pictureURL, setPictureURL] = useState("");
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const open = Boolean(anchorEl);
+
 	useEffect(() => {
 		const url = getItemFromLocalStorage({ key: "profile_image" });
 		setPictureURL(url || "/images/user_profile.jpg");
 	}, []);
-	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-	const open = Boolean(anchorEl);
+	useEffect(() => {}, [pictureURL]);
+
 	const handleClick = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
