@@ -76,7 +76,7 @@ export default function Page() {
 		setPage(1);
 	}, [sortBy, sortOrder]);
 	return (
-		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 py-[150px]">
+		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 py-[120px]">
 			<div className="text-white font-bold text-4xl">Your History 👇</div>
 			<div className="w-full flex flex-col">
 				<div className="flex items-end justify-between space-x-6 py-4 w-full text-[#65767E]">

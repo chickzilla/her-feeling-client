@@ -55,14 +55,14 @@ export function DataTable<TData, TValue>({
 					))}
 				</TableHeader>
 				<TableBody>
-					{table.getRowModel().rows?.length ? (
+					{data ? (
 						table.getRowModel().rows.map((row, index) => (
 							<TableRow
 								key={row.id}
 								data-state={row.getIsSelected() && "selected"}
 								className={`${
 									index % 2 === 0 ? "bg-[#272731]" : "bg-[#2A2A35]"
-								} text-gray-200 text-xs hover:bg-black`}
+								} text-gray-200 text-xs hover:bg-black hover:cursor-pointer`}
 							>
 								{row.getVisibleCells().map((cell) => (
 									<TableCell key={cell.id}>
