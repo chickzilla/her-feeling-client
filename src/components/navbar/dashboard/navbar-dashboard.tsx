@@ -63,16 +63,18 @@ export default function NavbarDashBoard() {
 						icon={<BookType size={20} />}
 						text="Text"
 						expanded={expanded}
-						active={pathname.startsWith("/text")}
-						href="/text"
+						active={pathname.startsWith("/board/text")}
+						href="/board/text"
 					/>
-					<NavbarItem
-						icon={<Images size={20} />}
-						text="Image"
-						active={pathname.startsWith("/image")}
-						href="/image"
-						expanded={expanded}
-					/>
+					{/*
+					TODO Version 2.0
+						<NavbarItem
+							icon={<Images size={20} />}
+							text="Image"
+							active={pathname.startsWith("/image")}
+							href="/board/image"
+							expanded={expanded}
+						/>*/}
 				</ul>
 			</nav>
 		</aside>

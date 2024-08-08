@@ -45,22 +45,25 @@ export default function NavbarMiddleItem({
 									href="/board/text"
 									description="From text alone, we can gauge her feelings."
 								/>
-								<NavbarDropdownItem
-									name="Image"
-									href="/board/image"
-									description="By looking at her image, we can determine her feelings."
-								/>
+								{/*
+								TODO version 2.0	
+									<NavbarMiddleSubItem
+										name="Image"
+										href="/board/image"
+										description="By looking at her image, we can determine her feelings."
+									/>*/}
 							</div>
 						</NavigationMenuContent>
 					</NavigationMenuItem>
 				</NavigationMenuList>
 			</NavigationMenu>
-			<Link
-				href="https://github.com/chickzilla/her-feeling-client"
-				className="hover:bg-slate-200 px-4 rounded-xl hover:bg-opacity-20 transition duration-200"
-			>
-				<div className="hover:cursor-pointer ">Github</div>
-			</Link>
+			{/*
+				<Link
+					href="https://github.com/chickzilla/her-feeling-client"
+					className="hover:bg-slate-200 px-4 rounded-xl hover:bg-opacity-20 transition duration-200"
+				>
+					<div className="hover:cursor-pointer ">Github</div>
+				</Link>*/}
 		</div>
 	);
 }
