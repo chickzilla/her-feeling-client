@@ -9,7 +9,12 @@ export default async function getFeeling({
   
   const encodedprompt = encodeURIComponent(prompt);
   const response = await fetch(
-    `${API_URL}/result-text?prompt=${encodedprompt}`, {
+    `${API_URL}/result-text`, {
+      method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt : encodedprompt }),
       credentials: 'include'
     }
   );
