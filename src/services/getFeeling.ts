@@ -9,7 +9,9 @@ export default async function getFeeling({
   
   const encodedprompt = encodeURIComponent(prompt);
   const response = await fetch(
-    `${API_URL}/result-text?prompt=${encodedprompt}`
+    `${API_URL}/result-text?prompt=${encodedprompt}`, {
+      credentials: 'include'
+    }
   );
 
   if (!response.ok) {
