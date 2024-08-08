@@ -14,28 +14,26 @@ export default function BoardTextPage() {
 	);
 
 	return (
-		<>
-			<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 ">
-				<div className="flex flex-col justify-between space-y-16 ">
-					<div className="flex flex-col text-center items-center h-[100vh] justify-center">
-						<HeaderTitle />
-						<TextAreaSendPrompt
-							setResultPromptToParent={(prompt: FeelingResponse) => {
-								setPromptResult(prompt);
-							}}
-							setOpenResultToParent={(isOpen: boolean) => {
-								setIsOpenResult(!isOpen);
-							}}
-						/>
-					</div>
-					<div className="">
-						<ResultPane
-							resultPrompt={promptResult}
-							openResultFromParent={isOpenResult}
-						/>
-					</div>
+		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 ">
+			<div className="flex flex-col justify-between space-y-16 ">
+				<div className="flex flex-col text-center items-center h-[100vh] justify-center">
+					<HeaderTitle />
+					<TextAreaSendPrompt
+						setResultPromptToParent={(prompt: FeelingResponse) => {
+							setPromptResult(prompt);
+						}}
+						setOpenResultToParent={(isOpen: boolean) => {
+							setIsOpenResult(!isOpen);
+						}}
+					/>
 				</div>
-			</main>
-		</>
+				<div className="">
+					<ResultPane
+						resultPrompt={promptResult}
+						openResultFromParent={isOpenResult}
+					/>
+				</div>
+			</div>
+		</main>
 	);
 }
