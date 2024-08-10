@@ -1,3 +1,6 @@
+'use server'
+import { cookies } from "next/headers";
+
 export default async function authWithSSO({email}:{email: string}){
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -7,8 +10,14 @@ export default async function authWithSSO({email}:{email: string}){
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
-        credentials: "include",
+        //credentials: "include",
     });
-    
-    return await response.json();
+
+    const responseData = await response.json();
+
+    if (responseData?.response) {
+        cookies().set("auth_token", responseData.response, { httpOnly: true, sameSite: "none", secure: true, maxAge: 60*60*24*7 });
+    }
+
+    return responseData;
 }

@@ -42,8 +42,7 @@ export default function SignInForm() {
 						isError: false,
 					});
 
-					//TODO : Redirect to the board page
-					//window.location.href = "/board/text";
+					window.location.href = "/board/text";
 				}
 			})
 			.catch(() => {
