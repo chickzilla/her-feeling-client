@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Prompt } from "next/font/google";
 
 import "./globals.css";
+import Footer from "@/components/footer/footer";
 
 const inter = Prompt({
 	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -9,7 +10,7 @@ const inter = Prompt({
 });
 
 export const metadata: Metadata = {
-	title: "TextMoods - Text-Based Mood Prediction",
+	title: "Text Moods - Text-Based Mood Prediction",
 	description:
 		"With TextMoods, reveal the emotional insights concealed in words. You may improve your understanding of and relationships with the significant someone in your life by using our sophisticated mood prediction tool, which analyzes text to uncover underlying emotions. TextMoods offers precise and customized mood forecasts to help you navigate relationships and strengthen bonds, whether you're just inquisitive or navigating a friendship.",
 };

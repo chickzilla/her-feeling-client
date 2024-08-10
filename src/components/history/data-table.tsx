@@ -26,10 +26,12 @@ import {
 	DialogDescription,
 } from "@/components/ui/dialog";
 import { MoodDescriptionEmojiHistory } from "@/constant/emoji";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface DataTableProps<TData, TValue> {
 	columns: ColumnDef<TData, TValue>[];
 	data: TData[];
+	isGetData: boolean;
 }
 
 function getMostProbableEmotion(data: any) {
@@ -78,6 +80,7 @@ function getHighestProbKey(data: any) {
 export function DataTable<TData, TValue>({
 	columns,
 	data,
+	isGetData,
 }: DataTableProps<TData, TValue>) {
 	const [selectedRowData, setSelectedRowData] = useState<TData | null>(null);
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -96,7 +99,7 @@ export function DataTable<TData, TValue>({
 
 	return (
 		<div className="w-full h-[40vh]">
-			<Table className="border-none h-full">
+			<Table className="border-none h-full w-full">
 				<TableHeader className="sticky top-0 bg-[#272731] z-10">
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow key={headerGroup.id}>
@@ -113,47 +116,64 @@ export function DataTable<TData, TValue>({
 						</TableRow>
 					))}
 				</TableHeader>
-				<TableBody>
-					{data ? (
-						table.getRowModel().rows.map((row, index) => {
-							// Determine the highest probability for the current row
-							const highestProbKey = getHighestProbKey(row.original as any);
 
-							return (
-								<TableRow
-									key={row.id}
-									data-state={row.getIsSelected() && "selected"}
-									className={`${
-										index % 2 === 0 ? "bg-[#272731]" : "bg-[#2A2A35]"
-									} text-gray-200 text-xs hover:bg-black hover:cursor-pointer`}
-									onClick={() => handleRowClick(row.original)}
+				{!isGetData ? (
+					<TableRow>
+						<TableCell
+							colSpan={columns.length}
+							className="h-24 text-center px-0 space-y-5"
+						>
+							<Skeleton className="h-10 w-full bg-[#2A2A35]" />
+							<Skeleton className="h-10 w-full bg-[#2A2A35]" />
+							<Skeleton className="h-10 w-full bg-[#2A2A35]" />
+							<Skeleton className="h-10 w-full bg-[#2A2A35]" />
+						</TableCell>
+					</TableRow>
+				) : (
+					<TableBody>
+						{data ? (
+							table.getRowModel().rows.map((row, index) => {
+								const highestProbKey = getHighestProbKey(row.original as any);
+
+								return (
+									<TableRow
+										key={row.id}
+										data-state={row.getIsSelected() && "selected"}
+										className={`${
+											index % 2 === 0 ? "bg-[#272731]" : "bg-[#2A2A35]"
+										} text-gray-200 text-xs hover:bg-black hover:cursor-pointer`}
+										onClick={() => handleRowClick(row.original)}
+									>
+										{row.getVisibleCells().map((cell) => (
+											<TableCell
+												key={cell.id}
+												className={
+													cell.column.id === highestProbKey
+														? "text-green-400 font-bold"
+														: ""
+												}
+											>
+												{flexRender(
+													cell.column.columnDef.cell,
+													cell.getContext()
+												)}
+											</TableCell>
+										))}
+									</TableRow>
+								);
+							})
+						) : (
+							<TableRow>
+								<TableCell
+									colSpan={columns.length}
+									className="h-24 text-center"
 								>
-									{row.getVisibleCells().map((cell) => (
-										<TableCell
-											key={cell.id}
-											className={
-												cell.column.id === highestProbKey
-													? "text-green-400 font-bold"
-													: ""
-											}
-										>
-											{flexRender(
-												cell.column.columnDef.cell,
-												cell.getContext()
-											)}
-										</TableCell>
-									))}
-								</TableRow>
-							);
-						})
-					) : (
-						<TableRow>
-							<TableCell colSpan={columns.length} className="h-24 text-center">
-								No results.
-							</TableCell>
-						</TableRow>
-					)}
-				</TableBody>
+									No results.
+								</TableCell>
+							</TableRow>
+						)}
+					</TableBody>
+				)}
 			</Table>
 
 			<Dialog open={isDialogOpen} onOpenChange={() => setIsDialogOpen(false)}>

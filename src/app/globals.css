@@ -112,7 +112,7 @@
 
 @layer components {
   .title-1 {
-    @apply text-6xl lg:text-7xl text-white font-semibold;
+    @apply text-4xl md:text-5xl lg:text-7xl text-white font-semibold;
   }
 
   .title-2 {
@@ -125,6 +125,10 @@
 
   .subtitle {
     @apply text-xl text-white;
+  }
+
+  .navbarText {
+    @apply md:text-base;
   }
 }
 

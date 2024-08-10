@@ -1,13 +1,8 @@
 "use client";
 
-import {
-	Trash2,
-	MessageSquareWarning,
-	BookType,
-	Images,
-	ChevronsRight,
-	ChevronsLeft,
-} from "lucide-react";
+import { BookType, ChevronsRight, ChevronsLeft } from "lucide-react";
+import { TbLogs } from "react-icons/tb";
+
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import NavbarItem from "./navbar-item";
@@ -54,17 +49,24 @@ export default function NavbarDashBoard() {
 							expanded ? "w-full" : "w-0"
 						}`}
 					>
-						Tell us by
+						Menu
 					</span>
 					<hr className="w-full bg-[#041016] my-5" />
 				</div>
 				<ul className="flex-1 flex gap-2.5 flex-col">
 					<NavbarItem
 						icon={<BookType size={20} />}
-						text="Text"
+						text="Predictions"
 						expanded={expanded}
 						active={pathname.startsWith("/board/text")}
 						href="/board/text"
+					/>
+					<NavbarItem
+						icon={<TbLogs size={20} />}
+						text="History"
+						expanded={expanded}
+						active={pathname.startsWith("/board/history")}
+						href="/board/history"
 					/>
 					{/*
 					TODO Version 2.0

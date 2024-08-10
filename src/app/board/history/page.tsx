@@ -7,6 +7,7 @@ import GetHistories from "@/services/getHistories";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import SelectPanel from "@/components/history/selectPanel";
+import { set } from "zod";
 
 export default function Page() {
 	const [history, setHistory] = useState<History[]>([]);
@@ -17,6 +18,7 @@ export default function Page() {
 	const [countRecord, setCountRecord] = useState<number>(0);
 	const [sortBy, setSortBy] = useState<string>("createdAt");
 	const [sortOrder, setSortOrder] = useState<string>("desc");
+	const [chlidGetData, setChildGetData] = useState<boolean>(false);
 
 	const fetchHistory = async (pageOnclick?: number) => {
 		try {
@@ -48,6 +50,8 @@ export default function Page() {
 				isError: true,
 			});
 		}
+
+		setChildGetData(true);
 	};
 
 	useEffect(() => {
@@ -59,6 +63,7 @@ export default function Page() {
 		if (limit * page >= totalRecord) {
 			return;
 		}
+		setChildGetData(false);
 		fetchHistory(page + 1);
 		setPage(page + 1);
 	};
@@ -67,11 +72,13 @@ export default function Page() {
 		if (page <= 1) {
 			return;
 		}
+		setChildGetData(false);
 		fetchHistory(page - 1);
 		setPage(page - 1);
 	};
 
 	useEffect(() => {
+		setChildGetData(false);
 		fetchHistory(1);
 		setPage(1);
 	}, [sortBy, sortOrder]);
@@ -115,7 +122,13 @@ export default function Page() {
 				</div>
 				{!loading && (
 					<div className="w-full flex flex-col items-start text-[#65767E]">
-						<DataTable columns={columns} data={history} />
+						{
+							<DataTable
+								columns={columns}
+								data={history}
+								isGetData={chlidGetData}
+							/>
+						}
 					</div>
 				)}
 			</div>
