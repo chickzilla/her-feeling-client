@@ -25,7 +25,7 @@ export default function Navbar({ isTextBlack }: { isTextBlack: boolean }) {
 							height={30}
 						/>
 						<div className={`${isTextBlack ? "text-black" : "text-white"}`}>
-							HERFEEL
+							TextMoods
 						</div>
 					</div>
 				</Link>
