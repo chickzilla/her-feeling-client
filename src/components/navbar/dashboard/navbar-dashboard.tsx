@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import NavbarItem from "./navbar-item";
 import { useTheme, useMediaQuery } from "@mui/material";
+import { IoLogoGithub } from "react-icons/io5";
 
 export default function NavbarDashBoard() {
 	const theme = useTheme();
@@ -68,16 +69,25 @@ export default function NavbarDashBoard() {
 						active={pathname.startsWith("/board/history")}
 						href="/board/history"
 					/>
-					{/*
-					TODO Version 2.0
-						<NavbarItem
-							icon={<Images size={20} />}
-							text="Image"
-							active={pathname.startsWith("/image")}
-							href="/board/image"
-							expanded={expanded}
-						/>*/}
 				</ul>
+				<div className="flex flex-col justify-between items-center gap-3.5 px-2">
+					<span
+						className={`text-white text-sm text-center font-semibold overflow-hidden text-nowrap ${
+							expanded ? "w-full" : "w-0"
+						}`}
+					>
+						Created By
+					</span>
+					<hr className="w-full bg-[#041016] my-5" />
+				</div>
+				<NavbarItem
+					icon={<IoLogoGithub size={25} />}
+					text={process.env.NEXT_PUBLIC_GITHUB_NAME || "mig"}
+					expanded={expanded}
+					active={pathname.startsWith("/board/noway")}
+					href={process.env.NEXT_PUBLIC_GITHUB_LINK || "#"}
+					isBlank={true}
+				/>
 			</nav>
 		</aside>
 	);

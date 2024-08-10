@@ -17,8 +17,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 				<Navbar isTextBlack={false} />
 				<NavbarDashBoard />
 				{children}
-				<Toaster />
-				<Footer />
 			</div>
 		</>
 	);

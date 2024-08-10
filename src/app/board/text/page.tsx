@@ -1,4 +1,5 @@
 "use client";
+import Footer from "@/components/footer/footer";
 import HeaderTitle from "@/components/text-board/header-title";
 import ResultPane from "@/components/text-board/resultPane";
 import TextAreaSendPrompt from "@/components/text-board/text-area-send-prompt";
@@ -26,6 +27,9 @@ export default function BoardTextPage() {
 							setIsOpenResult(!isOpen);
 						}}
 					/>
+					<div className="text-xs mt-4 text-gray-400 text-start w-full">
+						⏰On the first try, the prediction may be slow.
+					</div>
 				</div>
 				<div className="">
 					<ResultPane
