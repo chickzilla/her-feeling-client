@@ -28,7 +28,7 @@ export default function BoardTextPage() {
 						}}
 					/>
 					<div className="text-xs mt-4 text-gray-400 text-start w-full">
-						⏰On the first try, the prediction may be slow.
+						👉 The prediction could be slow on the first attempt.
 					</div>
 				</div>
 				<div className="">
