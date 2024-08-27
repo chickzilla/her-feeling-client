@@ -17,8 +17,11 @@ export default async function SignIn({
     const responseData = await response.json();
 
     if (responseData?.response) {
-        cookies().set("auth_token", responseData.response, { sameSite: "none", secure: true , maxAge: 60*60*24*7, domain: process.env.NEXT_PUBLIC_API_URL });
-    }
+        cookies().set("auth_token", responseData.response, {
+            sameSite: "none",
+            secure: true,
+            maxAge: 60 * 60 * 24 * 7,
+        });    }
 
 
     return responseData;
