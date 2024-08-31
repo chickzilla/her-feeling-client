@@ -21,6 +21,7 @@ export default async function SignIn({
             sameSite: "none",
             secure: true,
             maxAge: 60 * 60 * 24 * 7,
+            domain: '.textmoods.com'
         });    }
 
 

@@ -20,6 +20,7 @@ export default async function authWithSSO({email}:{email: string}){
             sameSite: "none",
             secure: true,
             maxAge: 60 * 60 * 24 * 7,
+            domain: '.textmoods.com'
         });
         
     }
