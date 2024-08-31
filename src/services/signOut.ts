@@ -13,7 +13,8 @@ export default async function SignOut() {
         //credentials: "include",
     });
 
-    cookies().set("auth_token", "", {httpOnly: true, sameSite: "none", secure: true, maxAge: 0});
+    cookies().set("auth_token", "", {httpOnly: true, sameSite: "none", secure: true, maxAge: 0, domain: '.textmoods.com'
+    });
 
     return await response.json();
 }
