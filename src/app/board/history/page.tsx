@@ -83,7 +83,7 @@ export default function Page() {
 	}, [sortBy, sortOrder]);
 
 	return (
-		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 py-[120px]">
+		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 py-[120px] pl-[140px] lg:pl-10">
 			<div className="title-1 text-base md:text-2xl move-up w-[100%] lg:w-auto leading-snug text-start mb-3">
 				Your History 👇
 			</div>
@@ -106,32 +106,32 @@ export default function Page() {
 								data={history}
 								isGetData={chlidGetData}
 							/>
-						</div>
-						{/* Pagination Controls */}
-						<div className="flex items-center justify-start space-x-4">
-							<span className="text-[#65767E] text-sm">
-								{limit * (page - 1) + countRecord} of {totalRecord} Records
-							</span>
-							<div className="flex items-center space-x-2">
-								<ChevronLeft
-									className={`hover:cursor-pointer ${
-										page <= 1
-											? "text-transparent hover:cursor-default"
-											: "text-gray-400"
-									} text-xs`}
-									onClick={prevPage}
-								/>
-								<span className="text-[#65767E] text-sm">{page}</span>
-								<ChevronRight
-									className={`hover:cursor-pointer ${
-										limit * page >= totalRecord
-											? "text-transparent hover:cursor-default"
-											: "text-gray-400"
-									} text-xs`}
-									onClick={nextPage}
-								/>
+							<div className="flex items-center justify-start space-x-4">
+								<span className="text-[#65767E] text-sm">
+									{limit * (page - 1) + countRecord} of {totalRecord} Records
+								</span>
+								<div className="flex items-center space-x-2">
+									<ChevronLeft
+										className={`hover:cursor-pointer ${
+											page <= 1
+												? "text-transparent hover:cursor-default"
+												: "text-gray-400"
+										} text-xs`}
+										onClick={prevPage}
+									/>
+									<span className="text-[#65767E] text-sm">{page}</span>
+									<ChevronRight
+										className={`hover:cursor-pointer ${
+											limit * page >= totalRecord
+												? "text-transparent hover:cursor-default"
+												: "text-gray-400"
+										} text-xs`}
+										onClick={nextPage}
+									/>
+								</div>
 							</div>
 						</div>
+						{/* Pagination Controls */}
 					</>
 				)}
 			</div>

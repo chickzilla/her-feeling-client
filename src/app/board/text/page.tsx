@@ -15,7 +15,7 @@ export default function BoardTextPage() {
 	);
 
 	return (
-		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 pt-16 pl-[100px] lg:pl-10">
+		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 pt-16 pl-[140px] lg:pl-10">
 			<div className="flex flex-col h-[100vh] justify-around">
 				<HeaderTitle />
 				<div className="flex flex-col text-center justify-around">

@@ -1,6 +1,6 @@
 "use client";
 
-import { BookType, ChevronsRight, ChevronsLeft } from "lucide-react";
+import { BookType, Menu } from "lucide-react";
 import { TbLogs } from "react-icons/tb";
 
 import { useEffect, useState } from "react";
@@ -32,10 +32,12 @@ export default function NavbarDashBoard() {
 
 	return (
 		<aside
-			className={`h-screen bg-blackGray flex-none fixed top-0 py-16 transition-all z-20 ${
+			className={`h-screen ${
+				!expanded ? "bg-coffeeBlack" : "bg-blackGray"
+			} flex-none fixed top-0 py-16 transition-all z-20 ${
 				!isSmallScreen && expanded ? "sticky" : ""
-			} ${isSmallScreen && !expanded ? "" : ""}`}
-			style={{ width: expanded ? "240px" : "60px" }}
+			} ${isSmallScreen && expanded ? "z-50" : ""}`}
+			style={{ width: expanded ? "240px" : "100px" }}
 		>
 			{/* Hide button if not a small screen */}
 			{isSmallScreen && (
@@ -44,23 +46,33 @@ export default function NavbarDashBoard() {
 						localStorage.setItem("navbarExpanded", String(!expanded));
 						setExpanded((curr) => !curr);
 					}}
-					className="p-1.5 rounded-xl absolute -right-4 top-20 text-gray-400 fade-in-delay-0"
+					className="p-1.5 rounded-xl top-20 text-gray-400 fade-in-delay-0 pl-[40px]"
 				>
-					{expanded ? <ChevronsLeft /> : <ChevronsRight />}
+					{expanded ? <Menu /> : <Menu />}
 				</button>
 			)}
+
 			<nav
 				className={`h-full flex flex-col max-w-60 justify-between overflow-x-hidden transition-all overflow-y-hidden no-scrollbar py-14 ${
 					expanded ? "px-10" : "px-4"
 				} fade-in-delay-0`}
 			>
 				<div className="flex flex-col justify-between items-center gap-3.5 px-2">
+					{isSmallScreen && expanded && (
+						<div className="flex justify-center items-center mt-6">
+							<img
+								src="/images/logo/logo.svg"
+								alt="TextMoods Logo"
+								className="h-10 w-10"
+							/>
+						</div>
+					)}
 					<span
 						className={`text-white text-sm text-center font-semibold overflow-hidden text-nowrap ${
 							expanded ? "w-full" : "w-0"
 						}`}
 					>
-						Menu
+						{isSmallScreen ? "TextMoods" : "Menu"}
 					</span>
 					<hr className="w-full bg-[#041016] my-5" />
 				</div>

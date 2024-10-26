@@ -11,7 +11,7 @@ export default function Navbar({ isTextBlack }: { isTextBlack: boolean }) {
 
 	return (
 		<nav
-			className={`fixed top-0 w-screen h-16 px-8 items-center z-50 
+			className={`fixed top-0 w-screen h-16 px-8 items-center z-30 
       bg-transparent text-white fade-in-delay-0* 
       `}
 		>

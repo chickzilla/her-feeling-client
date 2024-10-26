@@ -98,7 +98,7 @@ export function DataTable<TData, TValue>({
 	};
 
 	return (
-		<div className="w-full h-[40vh] overflow-x-auto">
+		<div className="w-full mb-4 overflow-x-auto">
 			<Table className="border-none h-full w-full">
 				<TableHeader className="sticky top-0 bg-[#2f2f2f] z-10">
 					{table.getHeaderGroups().map((headerGroup) => (
