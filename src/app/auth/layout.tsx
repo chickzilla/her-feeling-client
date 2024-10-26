@@ -12,23 +12,17 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
-		<html
-			style={{
-				backgroundColor: "#f1f5f9",
-			}}
-		>
-			<body>
-				<div className="flex">
-					<Navbar isTextBlack={true} />
-					<GoogleOAuthProvider
-						clientId={process.env.NEXT_PUBLIC_GOOGLE_CREDENTIALS_LOGIN || ""}
-					>
-						{children}
-					</GoogleOAuthProvider>
-					<Toaster />
-					<FooterBlack />
-				</div>
-			</body>
-		</html>
+		<>
+			<div className="flex">
+				<Navbar isTextBlack={true} />
+				<GoogleOAuthProvider
+					clientId={process.env.NEXT_PUBLIC_GOOGLE_CREDENTIALS_LOGIN || ""}
+				>
+					{children}
+				</GoogleOAuthProvider>
+				<Toaster />
+				<FooterBlack />
+			</div>
+		</>
 	);
 }
