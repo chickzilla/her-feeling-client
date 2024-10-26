@@ -4,11 +4,10 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
     const token = request.cookies.get('auth_token');
 
-    //TODO uncomment
-    /*if (request.nextUrl.pathname.startsWith('/board/history') && !token) {
+    if (request.nextUrl.pathname.startsWith('/board/history') && !token) {
         return NextResponse.rewrite(new URL('/auth/sign-in', request.url))
       }
-*/
+
     return NextResponse.next();
 }
 
