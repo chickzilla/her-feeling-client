@@ -12,12 +12,16 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
-		<>
+		<html
+			style={{
+				backgroundColor: "#212121",
+			}}
+		>
 			<div className="flex">
 				<Navbar isTextBlack={false} />
 				<NavbarDashBoard />
 				{children}
 			</div>
-		</>
+		</html>
 	);
 }
