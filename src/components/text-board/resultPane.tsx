@@ -69,10 +69,10 @@ export default function ResultPane({
 				{isResult ? (
 					<DrawerContent>
 						<DrawerHeader className="flex-col items-center justify-center py-1 space-y-2">
-							<DrawerTitle className="text-white font-bold text-4xl text-center">
+							<DrawerTitle className="text-white font-bold text-2xl lg:text-4xl text-center">
 								{highestMood}
 							</DrawerTitle>
-							<DrawerDescription className="text-white text-center px-16">
+							<DrawerDescription className="text-white text-center px-16 text-sm lg:text-base">
 								{MoodDescription.get(highestMood as Mood)}
 							</DrawerDescription>
 						</DrawerHeader>

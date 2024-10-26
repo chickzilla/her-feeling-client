@@ -15,23 +15,24 @@ export default function BoardTextPage() {
 	);
 
 	return (
-		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 pt-16">
-			<div className="flex flex-col h-[100vh] justify-between">
+		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 pt-16 pl-[100px] lg:pl-10">
+			<div className="flex flex-col h-[100vh] justify-around">
 				<HeaderTitle />
 				<div className="flex flex-col text-center justify-around">
-					<div>
-						<TextAreaSendPrompt
-							setResultPromptToParent={(prompt: FeelingResponse) => {
-								setPromptResult(prompt);
-							}}
-							setOpenResultToParent={(isOpen: boolean) => {
-								setIsOpenResult(!isOpen);
-							}}
-						/>
-						<div className="text-xs mt-4 text-gray-400 text-start w-full">
-							👉 Prediction could be wrong. Please use them for decision-making
-							purposes only.
-						</div>
+					<div className="title-1 text-base lg:text-2xl move-up w-[100%] lg:w-auto leading-snug text-start text-orange-500">
+						Let's Predict 🧐
+					</div>
+					<TextAreaSendPrompt
+						setResultPromptToParent={(prompt: FeelingResponse) => {
+							setPromptResult(prompt);
+						}}
+						setOpenResultToParent={(isOpen: boolean) => {
+							setIsOpenResult(!isOpen);
+						}}
+					/>
+					<div className="text-xs mt-4 text-gray-400 text-start w-full">
+						👉 Prediction could be wrong. Please use them for decision-making
+						purposes only.
 					</div>
 				</div>
 				<div className="">

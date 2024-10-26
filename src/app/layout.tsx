@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Prompt } from "next/font/google";
 
 import "./globals.css";
-import Footer from "@/components/footer/footer";
 
 const inter = Prompt({
 	weight: ["200", "300", "400", "500", "600", "700", "800", "900"],

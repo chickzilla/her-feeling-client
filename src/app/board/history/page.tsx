@@ -97,39 +97,42 @@ export default function Page() {
 							setSortOrder(order);
 						}}
 					/>
-					<div className="flex items-center space-x-2">
-						<div className="text-sm">
-							{limit * (page - 1) + countRecord} of {totalRecord} Records
-						</div>
-						<div className="flex items-center space-x-1">
-							<ChevronLeft
-								className={`hover:cursor-pointer ${
-									page <= 1 ? "text-gray-400 hover:cursor-not-allowed" : ""
-								} text-xs`}
-								onClick={prevPage}
-							/>
-							<span className="text-sm">{page}</span>
-							<ChevronRight
-								className={`hover:cursor-pointer ${
-									limit * page >= totalRecord
-										? "text-gray-400 hover:cursor-not-allowed"
-										: ""
-								} text-xs`}
-								onClick={nextPage}
-							/>
-						</div>
-					</div>
 				</div>
 				{!loading && (
-					<div className="w-full flex flex-col items-start text-[#65767E]">
-						{
+					<>
+						<div className="w-full flex flex-col items-start text-[#65767E]">
 							<DataTable
 								columns={columns}
 								data={history}
 								isGetData={chlidGetData}
 							/>
-						}
-					</div>
+						</div>
+						{/* Pagination Controls */}
+						<div className="flex items-center justify-start space-x-4">
+							<span className="text-[#65767E] text-sm">
+								{limit * (page - 1) + countRecord} of {totalRecord} Records
+							</span>
+							<div className="flex items-center space-x-2">
+								<ChevronLeft
+									className={`hover:cursor-pointer ${
+										page <= 1
+											? "text-transparent hover:cursor-default"
+											: "text-gray-400"
+									} text-xs`}
+									onClick={prevPage}
+								/>
+								<span className="text-[#65767E] text-sm">{page}</span>
+								<ChevronRight
+									className={`hover:cursor-pointer ${
+										limit * page >= totalRecord
+											? "text-transparent hover:cursor-default"
+											: "text-gray-400"
+									} text-xs`}
+									onClick={nextPage}
+								/>
+							</div>
+						</div>
+					</>
 				)}
 			</div>
 		</main>

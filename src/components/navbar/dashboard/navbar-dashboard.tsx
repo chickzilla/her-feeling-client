@@ -34,7 +34,7 @@ export default function NavbarDashBoard() {
 		<aside
 			className={`h-screen bg-blackGray flex-none fixed top-0 py-16 transition-all z-20 ${
 				!isSmallScreen && expanded ? "sticky" : ""
-			} ${isSmallScreen && !expanded ? "sticky z-0" : ""}`}
+			} ${isSmallScreen && !expanded ? "" : ""}`}
 			style={{ width: expanded ? "240px" : "60px" }}
 		>
 			{/* Hide button if not a small screen */}

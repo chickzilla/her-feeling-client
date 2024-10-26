@@ -53,7 +53,7 @@ export default function TextAreaSendPrompt({
 	};
 
 	return (
-		<div className="w-[100%] bg-[#2f2f2f] rounded-3xl p-4 flex flex-col mt-12">
+		<div className="w-[100%] bg-[#2f2f2f] rounded-3xl p-4 flex flex-col mt-4">
 			<div className="relative w-full">
 				{isFetching ? (
 					<div className="absolute inset-0 flex items-center justify-center bg-neutral-800 bg-opacity-70 rounded-3xl">

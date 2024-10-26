@@ -14,7 +14,7 @@ export default function SelectPanel({
 	setOrderByToParent: (value: string) => void;
 }) {
 	return (
-		<div className="flex flex-row space-x-5">
+		<div className="flex flex-row space-x-5 w-full">
 			<div className="space-y-2">
 				<div className="text-xs">Sort By:</div>
 				<Select
@@ -22,7 +22,7 @@ export default function SelectPanel({
 						setSortByToParent(value);
 					}}
 				>
-					<SelectTrigger className="w-[180px] text-white">
+					<SelectTrigger className="px-4 py-2 text-white">
 						<SelectValue placeholder="Date" />
 					</SelectTrigger>
 					<SelectContent className="bg-white">
@@ -60,7 +60,7 @@ export default function SelectPanel({
 						setOrderByToParent(value);
 					}}
 				>
-					<SelectTrigger className="w-[180px] text-white">
+					<SelectTrigger className="px-4 py-2 text-white">
 						<SelectValue placeholder="DESC" />
 					</SelectTrigger>
 					<SelectContent className="bg-white">
