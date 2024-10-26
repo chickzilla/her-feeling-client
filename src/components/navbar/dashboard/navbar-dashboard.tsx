@@ -11,7 +11,7 @@ import { IoLogoGithub } from "react-icons/io5";
 
 export default function NavbarDashBoard() {
 	const theme = useTheme();
-	const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+	const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 	const [expanded, setExpanded] = useState(false); // Default to unexpanded
 
 	useEffect(() => {

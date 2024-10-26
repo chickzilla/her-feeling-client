@@ -104,7 +104,7 @@ export function DataTable<TData, TValue>({
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow key={headerGroup.id}>
 							{headerGroup.headers.map((header) => (
-								<TableHead key={header.id} className="text-sm lg:text-base">
+								<TableHead key={header.id} className="text-sm md:text-base">
 									{header.isPlaceholder
 										? null
 										: flexRender(
@@ -186,7 +186,7 @@ export function DataTable<TData, TValue>({
 							? (selectedRowData as any).Prompt || "No Prompt available"
 							: "No data available."}
 					</div>
-					<div className="flex w-full justify-between flex-row text-sm lg:text-base">
+					<div className="flex w-full justify-between flex-row text-sm md:text-base">
 						<div className="p-4">
 							{selectedRowData
 								? (selectedRowData as any).CreatedAt ||

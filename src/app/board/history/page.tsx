@@ -84,7 +84,7 @@ export default function Page() {
 
 	return (
 		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 py-[120px]">
-			<div className="title-1 text-base lg:text-2xl move-up w-[100%] lg:w-auto leading-snug text-start mb-3">
+			<div className="title-1 text-base md:text-2xl move-up w-[100%] lg:w-auto leading-snug text-start mb-3">
 				Your History 👇
 			</div>
 			<div className="w-full flex flex-col">
