@@ -55,9 +55,9 @@ export default function NavbarDashBoard() {
 			<nav
 				className={`h-full flex flex-col max-w-60 justify-between overflow-x-hidden transition-all overflow-y-hidden no-scrollbar py-14 ${
 					expanded ? "px-10" : "px-4"
-				} fade-in-delay-0`}
+				} fade-in-delay-0 md:pb-28 `}
 			>
-				<div className="flex flex-col justify-between items-center gap-3.5 px-2">
+				<div className="flex flex-col justify-around items-center gap-3.5 px-2">
 					{isSmallScreen && expanded && (
 						<div className="flex justify-center items-center mt-6">
 							<img
