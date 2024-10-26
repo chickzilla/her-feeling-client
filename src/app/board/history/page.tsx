@@ -7,7 +7,6 @@ import GetHistories from "@/services/getHistories";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import SelectPanel from "@/components/history/selectPanel";
-import { set } from "zod";
 
 export default function Page() {
 	const [history, setHistory] = useState<History[]>([]);
@@ -82,9 +81,12 @@ export default function Page() {
 		fetchHistory(1);
 		setPage(1);
 	}, [sortBy, sortOrder]);
+
 	return (
 		<main className="w-[100vw] px-10 lg:px-20 space-y-12 h-[100vh] overflow-y-hidden text-black bg-coffeeBlack overflow-x-hidden pb-20 py-[120px]">
-			<div className="text-white font-bold text-4xl">Your History 👇</div>
+			<div className="title-1 text-base lg:text-2xl move-up w-[100%] lg:w-auto leading-snug text-start mb-3">
+				Your History 👇
+			</div>
 			<div className="w-full flex flex-col">
 				<div className="flex items-end justify-between space-x-6 py-4 w-full text-[#65767E]">
 					<SelectPanel
@@ -95,41 +97,42 @@ export default function Page() {
 							setSortOrder(order);
 						}}
 					/>
-					<div className="flex">
-						<div className="">
-							<span className="text-[#65767E] text-sm">
-								{limit * (page - 1) + countRecord} of {totalRecord} Records
-							</span>
-						</div>
-						<div className="flex space-x-2 ">
-							<ChevronLeft
-								className={`hover:cursor-pointer ${
-									page <= 1 ? "text-black hover:cursor-default" : ""
-								} text-xs`}
-								onClick={prevPage}
-							/>
-							<span className="text-[#65767E] text-sm">{page}</span>
-							<ChevronRight
-								className={`cursor-pointer ${
-									limit * page >= totalRecord
-										? "text-black hover:cursor-default"
-										: ""
-								} text-xs`}
-								onClick={nextPage}
-							/>
-						</div>
-					</div>
 				</div>
 				{!loading && (
-					<div className="w-full flex flex-col items-start text-[#65767E]">
-						{
+					<>
+						<div className="w-full flex flex-col items-start text-[#65767E]">
 							<DataTable
 								columns={columns}
 								data={history}
 								isGetData={chlidGetData}
 							/>
-						}
-					</div>
+						</div>
+						{/* Pagination Controls */}
+						<div className="flex items-center justify-start space-x-4">
+							<span className="text-[#65767E] text-sm">
+								{limit * (page - 1) + countRecord} of {totalRecord} Records
+							</span>
+							<div className="flex items-center space-x-2">
+								<ChevronLeft
+									className={`hover:cursor-pointer ${
+										page <= 1
+											? "text-transparent hover:cursor-default"
+											: "text-gray-400"
+									} text-xs`}
+									onClick={prevPage}
+								/>
+								<span className="text-[#65767E] text-sm">{page}</span>
+								<ChevronRight
+									className={`hover:cursor-pointer ${
+										limit * page >= totalRecord
+											? "text-transparent hover:cursor-default"
+											: "text-gray-400"
+									} text-xs`}
+									onClick={nextPage}
+								/>
+							</div>
+						</div>
+					</>
 				)}
 			</div>
 		</main>

@@ -16,6 +16,10 @@ export default function NavbarDashBoard() {
 
 	useEffect(() => {
 		if (!isSmallScreen) {
+			// Always expanded on larger screens
+			setExpanded(true);
+		} else {
+			// Use localStorage for smaller screens
 			const expandedDefault =
 				typeof window !== "undefined"
 					? localStorage.getItem("navbarExpanded")
@@ -27,8 +31,14 @@ export default function NavbarDashBoard() {
 	const pathname = usePathname();
 
 	return (
-		<aside className="h-screen bg-blackGray flex-none sticky top-0 py-16 ">
-			{!isSmallScreen && (
+		<aside
+			className={`h-screen bg-blackGray flex-none fixed top-0 py-16 transition-all z-20 ${
+				!isSmallScreen && expanded ? "sticky" : ""
+			} ${isSmallScreen && !expanded ? "" : ""}`}
+			style={{ width: expanded ? "240px" : "60px" }}
+		>
+			{/* Hide button if not a small screen */}
+			{isSmallScreen && (
 				<button
 					onClick={() => {
 						localStorage.setItem("navbarExpanded", String(!expanded));
@@ -42,7 +52,7 @@ export default function NavbarDashBoard() {
 			<nav
 				className={`h-full flex flex-col max-w-60 justify-between overflow-x-hidden transition-all overflow-y-hidden no-scrollbar py-14 ${
 					expanded ? "px-10" : "px-4"
-				} fade-in-delay-0 border-r-2 border-neutral-800`}
+				} fade-in-delay-0`}
 			>
 				<div className="flex flex-col justify-between items-center gap-3.5 px-2">
 					<span

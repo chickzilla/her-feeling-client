@@ -98,13 +98,13 @@ export function DataTable<TData, TValue>({
 	};
 
 	return (
-		<div className="w-full h-[40vh]">
+		<div className="w-full h-[40vh] overflow-x-auto">
 			<Table className="border-none h-full w-full">
-				<TableHeader className="sticky top-0 bg-[#272731] z-10">
+				<TableHeader className="sticky top-0 bg-[#2f2f2f] z-10">
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow key={headerGroup.id}>
 							{headerGroup.headers.map((header) => (
-								<TableHead key={header.id} className="text-base">
+								<TableHead key={header.id} className="text-sm lg:text-base">
 									{header.isPlaceholder
 										? null
 										: flexRender(
@@ -123,10 +123,10 @@ export function DataTable<TData, TValue>({
 							colSpan={columns.length}
 							className="h-24 text-center px-0 space-y-5"
 						>
-							<Skeleton className="h-10 w-full bg-[#2A2A35]" />
-							<Skeleton className="h-10 w-full bg-[#2A2A35]" />
-							<Skeleton className="h-10 w-full bg-[#2A2A35]" />
-							<Skeleton className="h-10 w-full bg-[#2A2A35]" />
+							<Skeleton className="h-10 w-full bg-[#2f2f2f]" />
+							<Skeleton className="h-10 w-full bg-[#2f2f2f]" />
+							<Skeleton className="h-10 w-full bg-[#2f2f2f]" />
+							<Skeleton className="h-10 w-full bg-[#2f2f2f]" />
 						</TableCell>
 					</TableRow>
 				) : (
@@ -140,7 +140,7 @@ export function DataTable<TData, TValue>({
 										key={row.id}
 										data-state={row.getIsSelected() && "selected"}
 										className={`${
-											index % 2 === 0 ? "bg-[#272731]" : "bg-[#2A2A35]"
+											index % 2 === 0 ? "bg-[#3d3d3d]" : "bg-[#2f2f2f]"
 										} text-gray-200 text-xs hover:bg-black hover:cursor-pointer`}
 										onClick={() => handleRowClick(row.original)}
 									>
@@ -177,7 +177,7 @@ export function DataTable<TData, TValue>({
 			</Table>
 
 			<Dialog open={isDialogOpen} onOpenChange={() => setIsDialogOpen(false)}>
-				<DialogContent className="text-gray-200 w-[60vw]">
+				<DialogContent className="text-gray-200 w-[80vw]">
 					<DialogHeader>
 						<DialogTitle className="text-center text-lg">Prompt</DialogTitle>
 					</DialogHeader>
@@ -186,7 +186,7 @@ export function DataTable<TData, TValue>({
 							? (selectedRowData as any).Prompt || "No Prompt available"
 							: "No data available."}
 					</div>
-					<div className="flex w-full justify-between flex-row">
+					<div className="flex w-full justify-between flex-row text-sm lg:text-base">
 						<div className="p-4">
 							{selectedRowData
 								? (selectedRowData as any).CreatedAt ||
