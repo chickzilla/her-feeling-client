@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --coffeeBlack: #000000;
-    --blackGray: #000000;
+    --coffeeBlack: #212121;
+    --blackGray: #171717;
     --borderColor: #71717a;
   }
 }
@@ -120,7 +120,7 @@
   }
 
   .description {
-    @apply text-xs lg:text-base text-gray-400;
+    @apply text-gray-400;
   }
 
   .subtitle {

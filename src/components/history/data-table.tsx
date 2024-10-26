@@ -98,9 +98,9 @@ export function DataTable<TData, TValue>({
 	};
 
 	return (
-		<div className="w-full h-[40vh]">
+		<div className="w-full h-[40vh] overflow-x-auto">
 			<Table className="border-none h-full w-full">
-				<TableHeader className="sticky top-0 bg-[#272731] z-10">
+				<TableHeader className="sticky top-0 bg-[#2f2f2f] z-10">
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow key={headerGroup.id}>
 							{headerGroup.headers.map((header) => (
@@ -140,7 +140,7 @@ export function DataTable<TData, TValue>({
 										key={row.id}
 										data-state={row.getIsSelected() && "selected"}
 										className={`${
-											index % 2 === 0 ? "bg-[#272731]" : "bg-[#2A2A35]"
+											index % 2 === 0 ? "bg-[#3d3d3d]" : "bg-[#2f2f2f]"
 										} text-gray-200 text-xs hover:bg-black hover:cursor-pointer`}
 										onClick={() => handleRowClick(row.original)}
 									>

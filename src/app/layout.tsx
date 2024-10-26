@@ -5,7 +5,7 @@ import "./globals.css";
 import Footer from "@/components/footer/footer";
 
 const inter = Prompt({
-	weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+	weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
 	subsets: ["latin"],
 });
 
