@@ -147,11 +147,11 @@ export function DataTable<TData, TValue>({
 										{row.getVisibleCells().map((cell) => (
 											<TableCell
 												key={cell.id}
-												className={
+												className={`${
 													cell.column.id === highestProbKey
 														? "text-green-400 font-bold"
 														: ""
-												}
+												} truncate max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis`}
 											>
 												{flexRender(
 													cell.column.columnDef.cell,
